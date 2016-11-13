@@ -14,10 +14,12 @@
 
     <mvc:annotation-driven/>
 
+    <import resource="database.xml"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/"
           p:suffix=".jsp"/>
-    <context:component-scan base-package="test"/>
+    <context:component-scan base-package="net.bizarrerus"/>
 
     <mvc:default-servlet-handler/>
 </beans>
