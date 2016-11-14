@@ -25,15 +25,25 @@
           p:username="root"
           p:password="root"/>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-          p:dataSource-ref="dataSource"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"-->
+          <!--p:dataSource-ref="dataSource"/>-->
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property
                 name="dataSource" ref="dataSource"/>
-
+        <property name="annotatedClasses">
+            <list>
+                <value>net.bizarrerus.training_diary.model.MuscleGroup</value>
+                <value>net.bizarrerus.training_diary.model.Training</value>
+                <value>net.bizarrerus.training_diary.model.Exercise</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -42,10 +52,15 @@
         </property>
     </bean>
 
-    <jdbc:initialize-database data-source="dataSource" enabled="true">
-        <jdbc:script location="classpath:schema.sql"/>
-    </jdbc:initialize-database>
+    <!--    Popolate DB     -->
+    <!--<jdbc:initialize-database data-source="dataSource" enabled="true">-->
+        <!--<jdbc:script location="classpath:schema.sql"/>-->
+        <!--<jdbc:script location="classpath:data.sql"/>-->
+    <!--</jdbc:initialize-database>-->
 
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
+
+    <bean id="muscleGroupDao" class="net.bizarrerus.training_diary.dao.MuscleGroupDaoImpl" />
+    <bean id="exerciseDao" class="net.bizarrerus.training_diary.dao.ExerciseDaoImpl" />
 </beans>

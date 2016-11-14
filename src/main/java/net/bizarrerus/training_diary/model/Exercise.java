@@ -10,8 +10,8 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "exercise")
-    private String exercise;
+    @Column(name = "exercise_name")
+    private String exercise_name;
 
     @ManyToMany
     @JoinTable(name = "exercise_trainings", joinColumns = @JoinColumn(name = "exercise_id"),
@@ -33,12 +33,12 @@ public class Exercise {
         this.id = id;
     }
 
-    public String getExercise() {
-        return exercise;
+    public String getExercise_name() {
+        return exercise_name;
     }
 
-    public void setExercise(String exercise) {
-        this.exercise = exercise;
+    public void setExercise_name(String exercise_name) {
+        this.exercise_name = exercise_name;
     }
 
     public Set<Training> getTrainings() {
@@ -61,7 +61,7 @@ public class Exercise {
     public String toString() {
         return "Exercise{" +
                 "id=" + id +
-                ", exercise='" + exercise + '\'' +
+                ", exercise_name='" + exercise_name + '\'' +
                 ", trainings=" + trainings +
                 ", muscleGroup=" + muscleGroup +
                 '}';

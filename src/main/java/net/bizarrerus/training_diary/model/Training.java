@@ -11,8 +11,8 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "training")
-    private String training;
+    @Column(name = "training_name")
+    private String training_name;
 
     @ManyToMany(mappedBy = "trainings")
     private Set<Exercise> exerciseSet;
@@ -34,12 +34,12 @@ public class Training {
         this.id = id;
     }
 
-    public String getTraining() {
-        return training;
+    public String getTraining_name() {
+        return training_name;
     }
 
-    public void setTraining(String training) {
-        this.training = training;
+    public void setTraining_name(String training_name) {
+        this.training_name = training_name;
     }
 
     public Set<Exercise> getExerciseSet() {
@@ -70,7 +70,7 @@ public class Training {
     public String toString() {
         return "Training{" +
                 "id=" + id +
-                ", training='" + training + '\'' +
+                ", training_name='" + training_name + '\'' +
                 ", exerciseSet=" + exerciseSet +
                 ", sets=" + sets +
                 ", reps=" + reps +

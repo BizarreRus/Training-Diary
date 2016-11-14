@@ -1,24 +1,23 @@
-DROP TABLE IF EXISTS training_exercises;
+DROP TABLE IF EXISTS exercise_trainings;
 DROP TABLE IF EXISTS trainings;
 DROP TABLE IF EXISTS exercises;
 DROP TABLE IF EXISTS muscle_groups;
 
 CREATE TABLE muscle_groups (
-  id      INT PRIMARY KEY AUTO_INCREMENT,
-  `group` VARCHAR(20)     DEFAULT 'Без группы'
+  id      INT AUTO_INCREMENT PRIMARY KEY ,
+  group_name VARCHAR(20)
 );
 
 CREATE TABLE exercises (
   id       INT PRIMARY KEY AUTO_INCREMENT,
-  exercise VARCHAR(20) NOT NULL,
+  exercise_name VARCHAR(20) NOT NULL,
   group_id INT,
-  FOREIGN KEY (group_id) REFERENCES muscle_groups (group_id)
+  FOREIGN KEY (group_id) REFERENCES muscle_groups (id)
 );
 
 CREATE TABLE trainings (
   id           INT PRIMARY KEY AUTO_INCREMENT,
-  training     VARCHAR(20) NOT NULL,
-#   training_day DATETIME    NOT NULL,
+  training_name     VARCHAR(20) NOT NULL,
   sets         INT,
   reps         INT
 );

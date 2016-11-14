@@ -10,8 +10,8 @@ public class MuscleGroup {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "group")
-    private String group;
+    @Column(name = "group_name")
+    private String group_name;
 
     @OneToMany(mappedBy = "muscleGroup", cascade = CascadeType.ALL)
     private Set<Exercise> exerciseSet;
@@ -27,12 +27,12 @@ public class MuscleGroup {
         this.id = id;
     }
 
-    public String getGroup() {
-        return group;
+    public String getGroup_name() {
+        return group_name;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGroup_name(String group_name) {
+        this.group_name = group_name;
     }
 
     public Set<Exercise> getExerciseSet() {
@@ -47,7 +47,7 @@ public class MuscleGroup {
     public String toString() {
         return "MuscleGroup{" +
                 "id=" + id +
-                ", group='" + group + '\'' +
+                ", group_name='" + group_name + '\'' +
                 ", exerciseSet=" + exerciseSet +
                 '}';
     }
