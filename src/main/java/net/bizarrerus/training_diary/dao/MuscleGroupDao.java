@@ -12,4 +12,8 @@ public interface MuscleGroupDao {
     MuscleGroup getByName(String name);
 
     void deleteByName(MuscleGroup muscleGroup);
+
+    List getGroupNames();
+
+    MuscleGroup get(int id);
 }

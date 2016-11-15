@@ -45,10 +45,6 @@ public class MuscleGroup {
 
     @Override
     public String toString() {
-        return "MuscleGroup{" +
-                "id=" + id +
-                ", group_name='" + group_name + '\'' +
-                ", exerciseSet=" + exerciseSet +
-                '}';
+        return group_name;
     }
 }

@@ -63,7 +63,7 @@ public class Exercise {
                 "id=" + id +
                 ", exercise_name='" + exercise_name + '\'' +
                 ", trainings=" + trainings +
-                ", muscleGroup=" + muscleGroup +
+                ", muscleGroup=" + muscleGroup.getGroup_name() +
                 '}';
     }
 }

@@ -42,6 +42,7 @@ public class MuscleGroupTestController {
     @RequestMapping("/removeGroup")
     public String getGroups(@RequestParam("groupName") String name, Model model){
         muscleGroupDao.deleteByName(muscleGroupDao.getByName(name));
+        model.addAttribute("muscleGroup", new MuscleGroup());
         return "index";
     }
 }
