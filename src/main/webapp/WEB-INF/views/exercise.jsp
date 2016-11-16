@@ -8,9 +8,11 @@
     <title>exercises</title>
 </head>
 <body>
+<h3>List of exercises:</h3>
 <c:forEach items="${exercises}" var="currExec">
-    <h4>${currExec.exercise_name}</h4>
+    ${currExec.exercise_name} <a href="/removeExerciseById/${currExec.id}">delete</a>.
 </c:forEach>
+<br>
 <br>
 Add new Exercise:
 <form:form action="/addExercise" commandName="exercise" method="post">
@@ -18,6 +20,7 @@ Add new Exercise:
     <br>
     Select Group:
     <select name="groupName">
+        <option value="Default">Default</option>
         <c:forEach items="${groupNames}" var="gName">
             <option value="${gName}">${gName}</option>
         </c:forEach>
@@ -25,6 +28,8 @@ Add new Exercise:
 
     <button type="submit">Add</button>
 </form:form>
+
+<h2><a href="/complex">Go to complex test page </a></h2>
 
 </body>
 </html>

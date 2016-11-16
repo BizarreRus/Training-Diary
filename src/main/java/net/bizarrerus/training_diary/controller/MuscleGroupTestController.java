@@ -1,7 +1,7 @@
 package net.bizarrerus.training_diary.controller;
 
-import net.bizarrerus.training_diary.dao.MuscleGroupDao;
 import net.bizarrerus.training_diary.model.MuscleGroup;
+import net.bizarrerus.training_diary.service.MuscleGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class MuscleGroupTestController {
 
     @Autowired
-    MuscleGroupDao muscleGroupDao;
+    MuscleGroupService muscleGroupService;
 
     @RequestMapping("/")
     public String testContoller(Model model){
@@ -21,28 +21,26 @@ public class MuscleGroupTestController {
 
     @RequestMapping("/getGroups")
     public String getGroups(Model model){
-        model.addAttribute("list", muscleGroupDao.getMuscleGroupList());
+        model.addAttribute("list", muscleGroupService.getAll());
         model.addAttribute("muscleGroup", new MuscleGroup());
         return "index";
     }
 
     @RequestMapping("/getGroup")
     public String getGroupById(@RequestParam("groupName") String name, Model model){
-        model.addAttribute("muscleGroup", muscleGroupDao.getByName(name));
+        model.addAttribute("muscleGroup", muscleGroupService.getByName(name));
         return "index";
     }
 
     @RequestMapping(value = "/addGroup", method = RequestMethod.POST)
     public String addGroup(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup, Model model){
-        muscleGroupDao.saveOrUpdate(muscleGroup);
-        model.addAttribute("muscleGroup", muscleGroup);
-        return "index";
+        muscleGroupService.saveOrUpdate(muscleGroup);
+        return "redirect:/";
     }
 
     @RequestMapping("/removeGroup")
-    public String getGroups(@RequestParam("groupName") String name, Model model){
-        muscleGroupDao.deleteByName(muscleGroupDao.getByName(name));
-        model.addAttribute("muscleGroup", new MuscleGroup());
-        return "index";
+    public String removeGroups(@RequestParam("groupName") String name, Model model){
+        muscleGroupService.deleteGroup(muscleGroupService.getByName(name));
+        return "redirect:/";
     }
 }

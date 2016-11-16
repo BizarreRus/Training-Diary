@@ -15,16 +15,14 @@ CREATE TABLE exercises (
   FOREIGN KEY (group_id) REFERENCES muscle_groups (id)
 );
 
-CREATE TABLE trainings (
+CREATE TABLE complexes (
   id           INT PRIMARY KEY AUTO_INCREMENT,
-  training_name     VARCHAR(20) NOT NULL,
-  sets         INT,
-  reps         INT
+  complex_name     VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE exercise_trainings (
+CREATE TABLE complex_exercise (
   exercise_id INT,
-  training_id INT,
+  complex_id INT,
   FOREIGN KEY (exercise_id) REFERENCES exercises (id),
-  FOREIGN KEY (training_id) REFERENCES trainings (id)
+  FOREIGN KEY (complex_id) REFERENCES complexes (id)
 );

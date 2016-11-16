@@ -40,7 +40,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>net.bizarrerus.training_diary.model.MuscleGroup</value>
-                <value>net.bizarrerus.training_diary.model.Training</value>
+                <value>net.bizarrerus.training_diary.model.Complex</value>
                 <value>net.bizarrerus.training_diary.model.Exercise</value>
             </list>
         </property>
@@ -52,7 +52,7 @@
         </property>
     </bean>
 
-    <!--    Popolate DB     -->
+        <!--Popolate DB-->
     <!--<jdbc:initialize-database data-source="dataSource" enabled="true">-->
         <!--<jdbc:script location="classpath:schema.sql"/>-->
         <!--<jdbc:script location="classpath:data.sql"/>-->

@@ -23,7 +23,26 @@ public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao{
 
     @Override
     @Transactional
-    public List exercises() {
+    public List getAll() {
         return getSession().createQuery("FROM Exercise").list();
     }
+
+    @Override
+    @Transactional
+    public void delete(Exercise exercise) {
+        getSession().delete(exercise);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        getSession().delete(get(id));
+    }
+
+    @Override
+    @Transactional
+    public Exercise get(int id) {
+        return (Exercise) getSession().load(Exercise.class, id);
+    }
+
 }

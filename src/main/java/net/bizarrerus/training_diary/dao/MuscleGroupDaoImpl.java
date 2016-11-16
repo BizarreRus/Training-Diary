@@ -5,7 +5,6 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -16,10 +15,9 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
 
     @Override
     @Transactional
-    public List getMuscleGroupList() {
+    public List getAll() {
         return getSession().createQuery("from MuscleGroup").list();
     }
-
 
 
     @Override
@@ -33,30 +31,22 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
     public MuscleGroup getByName(String name) {
         Query query = getSession().createQuery("FROM MuscleGroup MG WHERE MG.group_name =:name");
         query.setParameter("name", name);
-        MuscleGroup muscleGroup = (MuscleGroup) query.list().get(0);
-
-        return muscleGroup;
-    }
-
-    @Override
-    @Transactional
-    public void deleteByName(MuscleGroup muscleGroup) {
-        getSession().delete(muscleGroup);
-    }
-
-    @Override
-    @Transactional
-    public List getGroupNames() {
-        List<String> names = new ArrayList<>();
-        List<MuscleGroup> tmp = getMuscleGroupList();
-        for (MuscleGroup muscleGroup : tmp) {
-            names.add(muscleGroup.getGroup_name());
+        List queryList = query.list();
+        if (!queryList.isEmpty()){
+            return (MuscleGroup) queryList.get(0);
         }
-        return names;
+        return new MuscleGroup();
     }
 
     @Override
+    @Transactional
     public MuscleGroup get(int id) {
-        return (MuscleGroup) getSession().load(MuscleGroup.class, new Integer(id));
+        return (MuscleGroup) getSession().load(MuscleGroup.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void delete(MuscleGroup muscleGroup) {
+        getSession().delete(muscleGroup);
     }
 }
