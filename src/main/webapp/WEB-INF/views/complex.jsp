@@ -15,10 +15,13 @@
 </c:if>
 <c:if test="${!empty complexList}">
     <c:forEach items="${complexList}" var="comp">
-        <h3>Complex ${comp.complex_name} have following exercises:</h3>
-        <c:forEach items="${comp.exercises}" var="compExer">
-            ${compExer.exercise_name} <br>
-        </c:forEach>
+        <h3>Complex ${comp.complex_name}  <a href="/deleteComplex/${comp.id}"> delete</a></h3>
+        <c:if test="${!empty comp.exercises}">
+            Have following exercises:<br>
+            <c:forEach items="${comp.exercises}" var="compExer">
+                ${compExer.exercise_name}<br>
+            </c:forEach>
+        </c:if>
         <%-- add href's for browse for each complex info --%>
     </c:forEach>
 </c:if>

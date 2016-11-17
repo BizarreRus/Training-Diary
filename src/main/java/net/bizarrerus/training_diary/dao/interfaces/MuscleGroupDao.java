@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.dao;
+package net.bizarrerus.training_diary.dao.interfaces;
 
 import net.bizarrerus.training_diary.model.MuscleGroup;
 

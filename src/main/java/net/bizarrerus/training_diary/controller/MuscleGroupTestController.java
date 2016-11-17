@@ -1,7 +1,7 @@
 package net.bizarrerus.training_diary.controller;
 
 import net.bizarrerus.training_diary.model.MuscleGroup;
-import net.bizarrerus.training_diary.service.MuscleGroupService;
+import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

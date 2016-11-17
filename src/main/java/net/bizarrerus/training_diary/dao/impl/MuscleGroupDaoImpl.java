@@ -1,5 +1,6 @@
-package net.bizarrerus.training_diary.dao;
+package net.bizarrerus.training_diary.dao.impl;
 
+import net.bizarrerus.training_diary.dao.interfaces.MuscleGroupDao;
 import net.bizarrerus.training_diary.model.MuscleGroup;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;

@@ -14,7 +14,7 @@ public class Complex {
     @Column(name = "complex_name")
     private String complex_name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "complex_exercise", joinColumns = @JoinColumn(name = "complex_id"),
             inverseJoinColumns = @JoinColumn(name = "exercise_id"))
     private Set<Exercise> exercises;

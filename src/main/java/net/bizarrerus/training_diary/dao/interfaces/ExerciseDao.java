@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.dao;
+package net.bizarrerus.training_diary.dao.interfaces;
 
 import net.bizarrerus.training_diary.model.Exercise;
 
@@ -15,4 +15,5 @@ public interface ExerciseDao {
 
     Exercise get(int id);
 
+    void save(Exercise exercise);
 }

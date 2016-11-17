@@ -13,10 +13,8 @@ public class Exercise {
     @Column(name = "exercise_name")
     private String exercise_name;
 
-//    @ManyToMany
-//    @JoinTable(name = "complex_exercise", joinColumns = @JoinColumn(name = "exercise_id"),
-//    inverseJoinColumns = @JoinColumn(name = "complex_id"))
-//    private Set<Complex> complexes;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "exercises")
+    private Set<Complex> complexes;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -41,13 +39,13 @@ public class Exercise {
         this.exercise_name = exercise_name;
     }
 
-//    public Set<Complex> getComplexes() {
-//        return complexes;
-//    }
-//
-//    public void setComplexes(Set<Complex> complexes) {
-//        this.complexes = complexes;
-//    }
+    public Set<Complex> getComplexes() {
+        return complexes;
+    }
+
+    public void setComplexes(Set<Complex> complexes) {
+        this.complexes = complexes;
+    }
 
     public MuscleGroup getMuscleGroup() {
         return muscleGroup;
@@ -62,17 +60,8 @@ public class Exercise {
         return "Exercise{" +
                 "id=" + id +
                 ", exercise_name='" + exercise_name + '\'' +
+                ", complexes=" + complexes +
                 ", muscleGroup=" + muscleGroup.getGroup_name() +
                 '}';
     }
-
-    //    @Override
-//    public String toString() {
-//        return "Exercise{" +
-//                "id=" + id +
-//                ", exercise_name='" + exercise_name + '\'' +
-//                ", complexes=" + complexes +
-//                ", muscleGroup=" + muscleGroup.getGroup_name() +
-//                '}';
-//    }
 }

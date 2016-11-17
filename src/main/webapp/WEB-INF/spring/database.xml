@@ -60,9 +60,4 @@
 
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
-
-    <bean id="muscleGroupDao" class="net.bizarrerus.training_diary.dao.MuscleGroupDaoImpl" />
-    <bean id="exerciseDao" class="net.bizarrerus.training_diary.dao.ExerciseDaoImpl" />
-    <bean id="muscleGroupService" class="net.bizarrerus.training_diary.service.MuscleGroupServiceImpl" />
-
 </beans>

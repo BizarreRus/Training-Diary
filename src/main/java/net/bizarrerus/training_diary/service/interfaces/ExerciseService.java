@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.service;
+package net.bizarrerus.training_diary.service.interfaces;
 
 import net.bizarrerus.training_diary.model.Exercise;
 
@@ -14,4 +14,6 @@ public interface ExerciseService {
     void delete(Exercise exercise);
 
     void delete(int id);
+
+    void save(Exercise exercise);
 }

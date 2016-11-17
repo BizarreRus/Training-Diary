@@ -1,5 +1,6 @@
-package net.bizarrerus.training_diary.dao;
+package net.bizarrerus.training_diary.dao.impl;
 
+import net.bizarrerus.training_diary.dao.interfaces.ExerciseDao;
 import net.bizarrerus.training_diary.model.Exercise;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao{
+public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao {
 
     public ExerciseDaoImpl() {
     }
@@ -43,6 +44,12 @@ public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao{
     @Transactional
     public Exercise get(int id) {
         return (Exercise) getSession().load(Exercise.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void save(Exercise exercise) {
+        getSession().save(exercise);
     }
 
 }
