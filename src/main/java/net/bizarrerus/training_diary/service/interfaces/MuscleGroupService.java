@@ -1,6 +1,5 @@
 package net.bizarrerus.training_diary.service.interfaces;
 
-import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.model.MuscleGroup;
 
 import java.util.List;
@@ -17,9 +16,9 @@ public interface MuscleGroupService {
 
     void delete(MuscleGroup muscleGroup);
 
-    void updateGroup(Exercise exercise, String groupName);
-
     List getGroupNames();
 
     void deleteGroup(MuscleGroup muscleGroup);
+
+    void update(MuscleGroup muscleGroup);
 }

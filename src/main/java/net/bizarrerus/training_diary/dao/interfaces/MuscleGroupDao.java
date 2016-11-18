@@ -14,4 +14,6 @@ public interface MuscleGroupDao {
     MuscleGroup get(int id);
 
     void delete(MuscleGroup muscleGroup);
+
+    void update(MuscleGroup muscleGroup);
 }

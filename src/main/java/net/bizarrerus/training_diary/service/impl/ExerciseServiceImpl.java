@@ -2,14 +2,18 @@ package net.bizarrerus.training_diary.service.impl;
 
 import net.bizarrerus.training_diary.dao.interfaces.ExerciseDao;
 import net.bizarrerus.training_diary.dao.interfaces.MuscleGroupDao;
+import net.bizarrerus.training_diary.model.Complex;
 import net.bizarrerus.training_diary.model.Exercise;
+import net.bizarrerus.training_diary.model.MuscleGroup;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
@@ -54,6 +58,25 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Transactional
     public void save(Exercise exercise) {
         exerciseDao.save(exercise);
+    }
+
+    @Override
+    @Transactional
+    public void saveOrUpdate(Exercise exercise, String groupName) {
+        MuscleGroup muscleGroup = muscleGroupDao.getByName(groupName);
+        exercise.setMuscleGroup(muscleGroup);
+        muscleGroup.getExerciseSet().add(exercise);
+        muscleGroupDao.saveOrUpdate(muscleGroup);
+    }
+
+    @Override
+
+    public void update(Exercise exercise) {
+        Exercise oldExercise = exerciseDao.get(exercise.getId());
+        exercise.setMuscleGroup(oldExercise.getMuscleGroup());
+        exercise.setComplexes(oldExercise.getComplexes());
+
+        exerciseDao.update(exercise);
     }
 }
 

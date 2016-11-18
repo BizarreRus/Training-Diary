@@ -17,7 +17,7 @@
 <a href="/getGroups"><h4>Get groups</h4></a>
 <br>
 <c:forEach items="${list}" var="grou">
-    ${grou.group_name} <br>
+    ${grou.group_name} <a href="/delete/${grou.id}">delete</a> <a href="/edit/${grou.id}">edit</a> <br>
 </c:forEach><br>
 
 <form:form action="/addGroup" commandName="muscleGroup" method="POST">

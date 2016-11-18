@@ -10,7 +10,9 @@
 <body>
 <h3>List of exercises:</h3>
 <c:forEach items="${exercises}" var="currExec">
-    ${currExec.exercise_name} <a href="/removeExerciseById/${currExec.id}">delete</a>.
+    Exercise name: ${currExec.exercise_name}
+    Muscle group: ${currExec.muscleGroup}  <a href="/removeExerciseById/${currExec.id}">delete</a>.
+    <a href="/editExercise/${currExec.id}">edit</a><br>
 </c:forEach>
 <br>
 <br>

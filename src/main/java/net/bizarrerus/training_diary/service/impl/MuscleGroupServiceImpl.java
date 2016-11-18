@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -50,15 +51,6 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
 
     @Override
     @Transactional
-    public void updateGroup(Exercise exercise, String groupName) {
-        MuscleGroup muscleGroup = getByName(groupName);
-        exercise.setMuscleGroup(muscleGroup);
-        muscleGroup.getExerciseSet().add(exercise);
-        saveOrUpdate(muscleGroup);
-    }
-
-    @Override
-    @Transactional
     public void deleteGroup(MuscleGroup muscleGroup) {
         MuscleGroup defaultGroup = getByName("Default");
         Set<Exercise> exercises = muscleGroup.getExerciseSet();
@@ -69,6 +61,17 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
         saveOrUpdate(defaultGroup);
         muscleGroup.getExerciseSet().clear();
         delete(muscleGroup);
+    }
+
+    @Override
+    public void update(MuscleGroup muscleGroup) {
+        MuscleGroup oldGroup = muscleGroupDao.get(muscleGroup.getId());
+        Set<Exercise> exercises = new HashSet<>(oldGroup.getExerciseSet());
+        for (Exercise exercise : exercises) {
+            exercise.setMuscleGroup(muscleGroup);
+        }
+
+        muscleGroupDao.update(muscleGroup);
     }
 
     @Override

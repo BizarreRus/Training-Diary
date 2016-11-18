@@ -16,4 +16,6 @@ public interface ExerciseDao {
     Exercise get(int id);
 
     void save(Exercise exercise);
+
+    void update(Exercise exercise);
 }

@@ -16,4 +16,8 @@ public interface ExerciseService {
     void delete(int id);
 
     void save(Exercise exercise);
+
+    void saveOrUpdate(Exercise exercise, String groupName);
+
+    void update(Exercise exercise);
 }

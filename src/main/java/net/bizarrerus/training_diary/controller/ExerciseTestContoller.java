@@ -27,7 +27,7 @@ public class ExerciseTestContoller {
 
     @RequestMapping(value = "/addExercise", method = RequestMethod.POST)
     public String addExercise(@ModelAttribute ("exercise") Exercise exercise, @RequestParam ("groupName") String groupName){
-        muscleGroupService.updateGroup(exercise, groupName);
+        exerciseService.saveOrUpdate(exercise, groupName);
         return "redirect:/exercises";
     }
 

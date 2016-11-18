@@ -15,7 +15,7 @@
 </c:if>
 <c:if test="${!empty complexList}">
     <c:forEach items="${complexList}" var="comp">
-        <h3>Complex ${comp.complex_name}  <a href="/deleteComplex/${comp.id}"> delete</a></h3>
+        <h3>Complex ${comp.complex_name}  <a href="/deleteComplex/${comp.id}"> delete</a> <a href="/editComplex/${comp.id}">Edit </a> </h3>
         <c:if test="${!empty comp.exercises}">
             Have following exercises:<br>
             <c:forEach items="${comp.exercises}" var="compExer">

@@ -27,12 +27,17 @@ public class ComplexDaoImpl extends BaseDaoImpl implements ComplexDao {
         Complex complex = get(id);
         complex.getExercises().clear();
         getSession().delete(complex);
-
     }
 
     @Override
     @Transactional
     public Complex get(int id) {
         return (Complex) getSession().load(Complex.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void update(Complex complex) {
+        getSession().update(complex);
     }
 }

@@ -12,5 +12,9 @@ public interface ComplexService {
 
     void delete(int id);
 
-    public void deleteExercise(Exercise exercise);
+    void deleteExercise(Exercise exercise);
+
+    Complex get(int id);
+
+    void update(Complex complex);
 }

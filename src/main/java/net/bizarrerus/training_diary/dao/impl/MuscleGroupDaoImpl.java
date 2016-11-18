@@ -17,7 +17,7 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
     @Override
     @Transactional
     public List getAll() {
-        return getSession().createQuery("from MuscleGroup").list();
+        return getSession().createQuery("FROM MuscleGroup").list();
     }
 
 
@@ -49,5 +49,11 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
     @Transactional
     public void delete(MuscleGroup muscleGroup) {
         getSession().delete(muscleGroup);
+    }
+
+    @Override
+    @Transactional
+    public void update(MuscleGroup muscleGroup) {
+        getSession().update(muscleGroup);
     }
 }

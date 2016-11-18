@@ -56,4 +56,16 @@ public class ComplexServiceImpl implements ComplexService {
         exercise.getComplexes().clear();
         exerciseService.delete(exercise);
     }
+
+    @Override
+    public Complex get(int id) {
+        return complexDao.get(id);
+    }
+
+    @Override
+    public void update(Complex complex) {
+        Complex oldComplex = complexDao.get(complex.getId());
+        complex.setExercises(oldComplex.getExercises());
+        complexDao.update(complex);
+    }
 }

@@ -52,4 +52,10 @@ public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao {
         getSession().save(exercise);
     }
 
+    @Override
+    @Transactional
+    public void update(Exercise exercise) {
+        getSession().update(exercise);
+    }
+
 }
