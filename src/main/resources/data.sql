@@ -1,5 +1,5 @@
 INSERT INTO
-  muscle_groups(group_name)
+  muscle_group(muscle_group)
 VALUES
   ('Default'),
   ('Chest'),

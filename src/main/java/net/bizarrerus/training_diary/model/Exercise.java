@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "exercises")
+@Table(name = "exercise")
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "exercise_name")
-    private String exercise_name;
+    @Column(name = "exercise")
+    private String exercise;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "exercises")
     private Set<Complex> complexes;
@@ -31,12 +31,12 @@ public class Exercise {
         this.id = id;
     }
 
-    public String getExercise_name() {
-        return exercise_name;
+    public String getExercise() {
+        return exercise;
     }
 
-    public void setExercise_name(String exercise_name) {
-        this.exercise_name = exercise_name;
+    public void setExercise(String exercise) {
+        this.exercise = exercise;
     }
 
     public Set<Complex> getComplexes() {
@@ -59,9 +59,9 @@ public class Exercise {
     public String toString() {
         return "Exercise{" +
                 "id=" + id +
-                ", exercise_name='" + exercise_name + '\'' +
+                ", exercise_name='" + exercise + '\'' +
                 ", complexes=" + complexes +
-                ", muscleGroup=" + muscleGroup.getGroup_name() +
+                ", muscleGroup=" + muscleGroup.getMuscleGroup() +
                 '}';
     }
 }

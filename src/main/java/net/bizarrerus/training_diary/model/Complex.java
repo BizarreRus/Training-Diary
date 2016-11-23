@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "complexes")
+@Table(name = "complex")
 public class Complex {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "complex_name")
-    private String complex_name;
+    @Column(name = "complex")
+    private String complex;
 
     @ManyToMany
     @JoinTable(name = "complex_exercise", joinColumns = @JoinColumn(name = "complex_id"),
@@ -31,12 +31,12 @@ public class Complex {
         this.id = id;
     }
 
-    public String getComplex_name() {
-        return complex_name;
+    public String getComplex() {
+        return complex;
     }
 
-    public void setComplex_name(String complex_name) {
-        this.complex_name = complex_name;
+    public void setComplex(String complex) {
+        this.complex = complex;
     }
 
     public Set<Exercise> getExercises() {
@@ -51,7 +51,7 @@ public class Complex {
     public String toString() {
         return "Complex{" +
                 "id=" + id +
-                ", complex_name='" + complex_name + '\'' +
+                ", complex_name='" + complex + '\'' +
                 ", exercises=" + exercises +
                 '}';
     }

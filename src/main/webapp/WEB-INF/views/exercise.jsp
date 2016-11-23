@@ -10,7 +10,7 @@
 <body>
 <h3>List of exercises:</h3>
 <c:forEach items="${exercises}" var="currExec">
-    Exercise name: ${currExec.exercise_name}
+    Exercise name: ${currExec.exercise}
     Muscle group: ${currExec.muscleGroup}  <a href="/removeExerciseById/${currExec.id}">delete</a>.
     <a href="/editExercise/${currExec.id}">edit</a><br>
 </c:forEach>
@@ -18,7 +18,7 @@
 <br>
 Add new Exercise:
 <form:form action="/addExercise" commandName="exercise" method="post">
-    Insert exercise name: <form:input path="exercise_name"/>
+    Insert exercise name: <form:input path="exercise"/>
     <br>
     Select Group:
     <select name="groupName">

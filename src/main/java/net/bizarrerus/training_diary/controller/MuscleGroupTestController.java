@@ -33,7 +33,7 @@ public class MuscleGroupTestController {
     }
 
     @RequestMapping(value = "/addGroup", method = RequestMethod.POST)
-    public String addGroup(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup, Model model){
+    public String addGroup(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup){
         muscleGroupService.saveOrUpdate(muscleGroup);
         return "redirect:/";
     }

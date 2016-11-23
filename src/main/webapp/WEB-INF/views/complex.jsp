@@ -15,11 +15,11 @@
 </c:if>
 <c:if test="${!empty complexList}">
     <c:forEach items="${complexList}" var="comp">
-        <h3>Complex ${comp.complex_name}  <a href="/deleteComplex/${comp.id}"> delete</a> <a href="/editComplex/${comp.id}">Edit </a> </h3>
+        <h3>Complex ${comp.complex}  <a href="/deleteComplex/${comp.id}"> delete</a> <a href="/editComplex/${comp.id}">Edit </a> </h3>
         <c:if test="${!empty comp.exercises}">
             Have following exercises:<br>
-            <c:forEach items="${comp.exercises}" var="compExer">
-                ${compExer.exercise_name}<br>
+            <c:forEach items="${comp.exercises}" var="exer">
+                ${exer.exercise}<br>
             </c:forEach>
         </c:if>
         <%-- add href's for browse for each complex info --%>
@@ -30,12 +30,12 @@
 <br><br><br><br>
 Add new Complex:
 <form:form action="/addComplex" commandName="complex" method="post">
-    Insert complex name: <form:input path="complex_name"/>
+    Insert complex name: <form:input path="complex"/>
     <br>
     Select Exercises:
     <select name="exercisesID" multiple="multiple">
         <c:forEach items="${exercises}" var="exer">
-            <option value="${exer.id}">${exer.exercise_name}</option>
+            <option value="${exer.id}">${exer.exercise}</option>
         </c:forEach>
     </select>
 

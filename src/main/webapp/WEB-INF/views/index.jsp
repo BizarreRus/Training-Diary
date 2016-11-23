@@ -9,26 +9,25 @@
 </head>
 <body>
 <h4>Muscle Group Decs => </h4>
-<c:if test="${!empty muscleGroup.group_name}">
-    ${muscleGroup.group_name}
+<c:if test="${!empty muscleGroup.muscleGroup}">
+    ${muscleGroup.muscleGroup}
 </c:if>
 <br><br>
 
 <a href="/getGroups"><h4>Get groups</h4></a>
 <br>
 <c:forEach items="${list}" var="grou">
-    ${grou.group_name} <a href="/delete/${grou.id}">delete</a> <a href="/edit/${grou.id}">edit</a> <br>
+    ${grou.muscleGroup} <a href="/delete/${grou.id}">delete</a> <a href="/edit/${grou.id}">edit</a> <br>
 </c:forEach><br>
 
 <form:form action="/addGroup" commandName="muscleGroup" method="POST">
-    <h4>insert group by name</h4><form:input path="group_name"/>
+    <h4>insert group by name</h4><form:input path="muscleGroup"/>
     <button type="submit">Insert</button>
 </form:form>
 
 
 <form:form action="/getGroup" method="GET">
     <h4>Select group by name </h4><input type="text" name="groupName">
-
     <button type="submit">Get</button>
 </form:form>
 

@@ -13,10 +13,10 @@
     <form:form action="/edit" commandName="group">
         <form:hidden path="id"/>
 
-        <form:label path="group_name">
+        <form:label path="muscleGroup">
             <spring:message text="Edit group name"/>
         </form:label>
-        <form:input path="group_name"/>
+        <form:input path="muscleGroup"/>
         <input type="submit" value="Edit group">
     </form:form>
 </c:if>
@@ -25,10 +25,10 @@
     <form:form action="/editExercise" commandName="exercise">
         <form:hidden path="id"/>
 
-        <form:label path="exercise_name">
+        <form:label path="exercise">
             <spring:message text="Edit exercise name"/>
         </form:label>
-        <form:input path="exercise_name"/>
+        <form:input path="exercise"/>
         <input type="submit" value="Edit exercise">
     </form:form>
 </c:if>
@@ -37,10 +37,10 @@
     <form:form action="/editComplex" commandName="complex">
         <form:hidden path="id"/>
 
-        <form:label path="complex_name">
+        <form:label path="complex">
             <spring:message text="Edit complex name"/>
         </form:label>
-        <form:input path="complex_name"/>
+        <form:input path="complex"/>
         <input type="submit" value="Edit complex">
     </form:form>
 </c:if>

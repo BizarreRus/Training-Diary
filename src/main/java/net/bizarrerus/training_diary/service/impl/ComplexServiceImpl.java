@@ -52,6 +52,9 @@ public class ComplexServiceImpl implements ComplexService {
     public void deleteExercise(Exercise exercise){
         for (Complex complex : exercise.getComplexes()) {
             complex.getExercises().remove(exercise);
+            if (complex.getExercises().isEmpty()){
+                delete(complex.getId());
+            }
         }
         exercise.getComplexes().clear();
         exerciseService.delete(exercise);

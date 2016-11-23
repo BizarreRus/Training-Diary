@@ -30,7 +30,7 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
     @Override
     @Transactional
     public MuscleGroup getByName(String name) {
-        Query query = getSession().createQuery("FROM MuscleGroup MG WHERE MG.group_name =:name");
+        Query query = getSession().createQuery("FROM MuscleGroup MG WHERE MG.muscleGroup =:name");
         query.setParameter("name", name);
         List queryList = query.list();
         if (!queryList.isEmpty()){

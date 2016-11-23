@@ -80,8 +80,8 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
         List<String> names = new ArrayList<>();
         List<MuscleGroup> tmp = getAll();
         for (MuscleGroup muscleGroup : tmp) {
-            if (!muscleGroup.getGroup_name().equals("Default")) {
-                names.add(muscleGroup.getGroup_name());
+            if (!muscleGroup.getMuscleGroup().equals("Default")) {
+                names.add(muscleGroup.getMuscleGroup());
             }
         }
         return names;

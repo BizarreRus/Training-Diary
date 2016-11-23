@@ -11,7 +11,7 @@
     <properties>
         <org.springframework-version>4.2.5.RELEASE</org.springframework-version>
         <mysql-version>5.1.38</mysql-version>
-        <hibernate.version>4.3.5.Final</hibernate.version>
+        <hibernate.version>5.2.4.Final</hibernate.version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
     </properties>
 
@@ -37,11 +37,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 

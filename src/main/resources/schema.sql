@@ -1,28 +1,55 @@
-DROP TABLE IF EXISTS exercise_trainings;
-DROP TABLE IF EXISTS trainings;
-DROP TABLE IF EXISTS exercises;
-DROP TABLE IF EXISTS muscle_groups;
+DROP TABLE IF EXISTS activity;
+DROP TABLE IF EXISTS training;
+DROP TABLE IF EXISTS user;
 
-CREATE TABLE muscle_groups (
+DROP TABLE IF EXISTS complex_exercise;
+DROP TABLE IF EXISTS complex;
+DROP TABLE IF EXISTS exercise;
+DROP TABLE IF EXISTS muscle_group;
+
+CREATE TABLE muscle_group (
   id      INT AUTO_INCREMENT PRIMARY KEY ,
-  group_name VARCHAR(20)
+  muscle_group VARCHAR(20)
 );
 
-CREATE TABLE exercises (
+CREATE TABLE exercise (
   id       INT PRIMARY KEY AUTO_INCREMENT,
-  exercise_name VARCHAR(20) NOT NULL,
+  exercise VARCHAR(20) NOT NULL,
   group_id INT,
-  FOREIGN KEY (group_id) REFERENCES muscle_groups (id)
+  FOREIGN KEY (group_id) REFERENCES muscle_group (id)
 );
 
-CREATE TABLE complexes (
+CREATE TABLE complex (
   id           INT PRIMARY KEY AUTO_INCREMENT,
-  complex_name     VARCHAR(20) NOT NULL
+  complex     VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE complex_exercise (
   exercise_id INT,
   complex_id INT,
-  FOREIGN KEY (exercise_id) REFERENCES exercises (id),
-  FOREIGN KEY (complex_id) REFERENCES complexes (id)
+  FOREIGN KEY (exercise_id) REFERENCES exercise (id),
+  FOREIGN KEY (complex_id) REFERENCES complex (id)
+);
+
+CREATE TABLE user (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  usename VARCHAR(20),
+  password VARCHAR(20)
+);
+
+CREATE TABLE training (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  date TIMESTAMP,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE TABLE activity (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  exercise_id INT,
+  training_id INT,
+  reps INT(2),
+  kg INT(3),
+  FOREIGN KEY (exercise_id) REFERENCES exercise (id),
+  FOREIGN KEY (training_id) REFERENCES training (id)
 );

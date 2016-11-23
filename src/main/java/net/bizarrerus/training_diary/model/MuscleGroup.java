@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "muscle_groups")
+@Table(name = "muscle_group")
 public class MuscleGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "group_name")
-    private String group_name;
+    @Column(name = "muscle_group")
+    private String muscleGroup;
 
     @OneToMany(mappedBy = "muscleGroup", cascade = CascadeType.ALL)
     private Set<Exercise> exerciseSet;
@@ -27,12 +27,12 @@ public class MuscleGroup {
         this.id = id;
     }
 
-    public String getGroup_name() {
-        return group_name;
+    public String getMuscleGroup() {
+        return muscleGroup;
     }
 
-    public void setGroup_name(String group_name) {
-        this.group_name = group_name;
+    public void setMuscleGroup(String muscleGroup) {
+        this.muscleGroup = muscleGroup;
     }
 
     public Set<Exercise> getExerciseSet() {
@@ -45,6 +45,6 @@ public class MuscleGroup {
 
     @Override
     public String toString() {
-        return group_name;
+        return muscleGroup;
     }
 }
