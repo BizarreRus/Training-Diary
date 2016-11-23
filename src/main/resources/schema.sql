@@ -49,7 +49,7 @@ CREATE TABLE activity (
   exercise_id INT,
   training_id INT,
   reps INT(2),
-  kg INT(3),
+  weight INT(3),
   FOREIGN KEY (exercise_id) REFERENCES exercise (id),
   FOREIGN KEY (training_id) REFERENCES training (id)
 );

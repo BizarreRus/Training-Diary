@@ -20,6 +20,9 @@ public class Exercise {
     @JoinColumn(name = "group_id")
     private MuscleGroup muscleGroup;
 
+    @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
+    private Set<Activity> activities;
+
     public Exercise() {
     }
 
@@ -55,13 +58,22 @@ public class Exercise {
         this.muscleGroup = muscleGroup;
     }
 
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
+    }
+
     @Override
     public String toString() {
         return "Exercise{" +
                 "id=" + id +
-                ", exercise_name='" + exercise + '\'' +
+                ", exercise='" + exercise + '\'' +
                 ", complexes=" + complexes +
                 ", muscleGroup=" + muscleGroup.getMuscleGroup() +
+                ", activities=" + activities +
                 '}';
     }
 }

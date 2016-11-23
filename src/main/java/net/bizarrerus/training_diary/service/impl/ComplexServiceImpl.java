@@ -1,6 +1,7 @@
 package net.bizarrerus.training_diary.service.impl;
 
 import net.bizarrerus.training_diary.dao.interfaces.ComplexDao;
+import net.bizarrerus.training_diary.model.Activity;
 import net.bizarrerus.training_diary.model.Complex;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
@@ -56,7 +57,14 @@ public class ComplexServiceImpl implements ComplexService {
                 delete(complex.getId());
             }
         }
+//      problem is here. check why can't delete Exercise??!
+//        for (Activity activity : exercise.getActivities()) {
+//            activity.setExercise(new Exercise());
+//        }
+
+        exercise.getActivities().clear();
         exercise.getComplexes().clear();
+
         exerciseService.delete(exercise);
     }
 

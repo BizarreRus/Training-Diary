@@ -42,6 +42,9 @@
                 <value>net.bizarrerus.training_diary.model.MuscleGroup</value>
                 <value>net.bizarrerus.training_diary.model.Complex</value>
                 <value>net.bizarrerus.training_diary.model.Exercise</value>
+                <value>net.bizarrerus.training_diary.model.Activity</value>
+                <value>net.bizarrerus.training_diary.model.Training</value>
+                <value>net.bizarrerus.training_diary.model.User</value>
             </list>
         </property>
         <property name="hibernateProperties">
