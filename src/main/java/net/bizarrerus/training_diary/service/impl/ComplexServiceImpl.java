@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ComplexServiceImpl implements ComplexService {
@@ -57,10 +58,12 @@ public class ComplexServiceImpl implements ComplexService {
                 delete(complex.getId());
             }
         }
-//      problem is here. check why can't delete Exercise??!
-//        for (Activity activity : exercise.getActivities()) {
-//            activity.setExercise(new Exercise());
-//        }
+        Exercise ex = new Exercise();
+        //      problem is here. check why can't delete Exercise??!
+        Set<Activity> activities = exercise.getActivities();
+        for (Activity activity : activities) {
+            activity.setExercise(exercise);
+        }
 
         exercise.getActivities().clear();
         exercise.getComplexes().clear();

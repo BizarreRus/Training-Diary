@@ -165,7 +165,7 @@
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="44" parent="8" name="usename">
+      <column id="44" parent="8" name="username">
         <data-type>varchar(20)</data-type>
       </column>
       <column id="45" parent="8" name="password">

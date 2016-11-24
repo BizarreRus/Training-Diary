@@ -33,7 +33,7 @@ CREATE TABLE complex_exercise (
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  usename VARCHAR(20),
+  username VARCHAR(20),
   password VARCHAR(20)
 );
 
