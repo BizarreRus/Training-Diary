@@ -58,10 +58,7 @@ public class ComplexServiceImpl implements ComplexService {
                 delete(complex.getId());
             }
         }
-        Exercise ex = new Exercise();
-        //      problem is here. check why can't delete Exercise??!
-        Set<Activity> activities = exercise.getActivities();
-        for (Activity activity : activities) {
+        for (Activity activity : exercise.getActivities()) {
             activity.setExercise(exercise);
         }
 

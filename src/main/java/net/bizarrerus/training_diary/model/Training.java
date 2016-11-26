@@ -1,7 +1,7 @@
 package net.bizarrerus.training_diary.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,8 +12,8 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "date")
-    private LocalDateTime localDateTime;
+    @Column(name = "training_date")
+    private Date training_date;
 
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL)
     private Set<Activity> activities;
@@ -21,6 +21,11 @@ public class Training {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany
+    @JoinTable(name = "training_exercise", joinColumns = @JoinColumn(name = "training_id"),
+            inverseJoinColumns = @JoinColumn(name = "exercise_id"))
+    private Set<Exercise> exercises;
 
     public int getId() {
         return id;
@@ -30,13 +35,6 @@ public class Training {
         this.id = id;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
 
     public Set<Activity> getActivities() {
         return activities;
@@ -54,13 +52,31 @@ public class Training {
         this.user = user;
     }
 
+    public Set<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public Date getTrainingDate() {
+        return training_date;
+    }
+
+    public void setTrainingDate(Date trainingDate) {
+        this.training_date = trainingDate;
+    }
+
     @Override
     public String toString() {
         return "Training{" +
                 "id=" + id +
-                ", localDateTime=" + localDateTime +
+                ", date=" + training_date +
                 ", activities=" + activities +
                 ", user=" + user +
+                ", exercises=" + exercises +
                 '}';
     }
+
+    public void setExercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
 }

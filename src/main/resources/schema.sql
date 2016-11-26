@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS training_exercise;
 DROP TABLE IF EXISTS activity;
 DROP TABLE IF EXISTS training;
 DROP TABLE IF EXISTS user;
@@ -39,9 +40,16 @@ CREATE TABLE user (
 
 CREATE TABLE training (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  date TIMESTAMP,
+  training_date TIMESTAMP,
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE TABLE training_exercise (
+  training_id INT,
+  exercise_id INT,
+  FOREIGN KEY (training_id) REFERENCES training(id),
+  FOREIGN KEY (exercise_id) REFERENCES exercise(id)
 );
 
 CREATE TABLE activity (
