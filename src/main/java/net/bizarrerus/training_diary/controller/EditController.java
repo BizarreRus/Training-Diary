@@ -3,9 +3,11 @@ package net.bizarrerus.training_diary.controller;
 import net.bizarrerus.training_diary.model.Complex;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.model.MuscleGroup;
+import net.bizarrerus.training_diary.model.Training;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;
+import net.bizarrerus.training_diary.service.interfaces.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ public class EditController {
     ExerciseService exerciseService;
     @Autowired
     ComplexService complexService;
+    @Autowired
+    TrainingService trainingService;
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editGroup(@ModelAttribute("group") MuscleGroup muscleGroup) {
@@ -59,5 +63,4 @@ public class EditController {
         model.addAttribute("complex", complexService.get(id));
         return "editAll";
     }
-
 }

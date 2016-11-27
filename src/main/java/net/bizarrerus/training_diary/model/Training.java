@@ -1,7 +1,9 @@
 package net.bizarrerus.training_diary.model;
 
+import net.bizarrerus.training_diary.converter.LocalDateAttributeConverter;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -13,7 +15,8 @@ public class Training {
     private int id;
 
     @Column(name = "training_date")
-    private Date training_date;
+    @Convert(converter = LocalDateAttributeConverter.class)
+    private LocalDate trainingDate;
 
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL)
     private Set<Activity> activities;
@@ -35,6 +38,13 @@ public class Training {
         this.id = id;
     }
 
+    public LocalDate getTrainingDate() {
+        return trainingDate;
+    }
+
+    public void setTrainingDate(LocalDate trainingDate) {
+        this.trainingDate = trainingDate;
+    }
 
     public Set<Activity> getActivities() {
         return activities;
@@ -56,19 +66,12 @@ public class Training {
         return exercises;
     }
 
-    public Date getTrainingDate() {
-        return training_date;
-    }
-
-    public void setTrainingDate(Date trainingDate) {
-        this.training_date = trainingDate;
-    }
 
     @Override
     public String toString() {
         return "Training{" +
                 "id=" + id +
-                ", date=" + training_date +
+                ", date=" + trainingDate +
                 ", activities=" + activities +
                 ", user=" + user +
                 ", exercises=" + exercises +

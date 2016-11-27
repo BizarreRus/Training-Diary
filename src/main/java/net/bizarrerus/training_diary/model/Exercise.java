@@ -23,7 +23,6 @@ public class Exercise {
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
     private Set<Activity> activities;
 
-    // check this place! mapping works? or confused with set of complexes
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "exercises")
     private Set<Training> trainings;
 
@@ -82,11 +81,7 @@ public class Exercise {
     public String toString() {
         return "Exercise{" +
                 "id=" + id +
-                ", exercise='" + exercise + '\'' +
-                ", complexes=" + complexes +
-                ", muscleGroup=" + muscleGroup.getMuscleGroup() +
-                ", activities=" + activities +
-                ", trainings=" + trainings +
+                ", exercise='" + exercise +
                 '}';
     }
 }
