@@ -2,9 +2,7 @@ package net.bizarrerus.training_diary.service.impl;
 
 import net.bizarrerus.training_diary.dao.interfaces.ExerciseDao;
 import net.bizarrerus.training_diary.dao.interfaces.MuscleGroupDao;
-import net.bizarrerus.training_diary.model.Complex;
-import net.bizarrerus.training_diary.model.Exercise;
-import net.bizarrerus.training_diary.model.MuscleGroup;
+import net.bizarrerus.training_diary.model.*;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;
@@ -52,7 +50,21 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     @Transactional
     public void delete(int id) {
-        complexService.deleteExercise(get(id));
+        Exercise exercise = get(id);
+        for (Complex complex : exercise.getComplexes()) {
+            complex.getExercises().remove(exercise);
+            if (complex.getExercises().isEmpty()) {
+                complexService.delete(complex.getId());
+            }
+        }
+        for (Training training : exercise.getTrainings()) {
+            training.getExercises().remove(exercise);
+        }
+        exercise.getTrainings().clear();
+        exercise.getActivities().clear();
+        exercise.getComplexes().clear();
+
+        delete(exercise);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Exercise {
     @Column(name = "exercise")
     private String exercise;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "exercises")
+    @ManyToMany(mappedBy = "exercises", cascade = CascadeType.ALL)
     private Set<Complex> complexes;
 
     @ManyToOne
@@ -23,7 +23,7 @@ public class Exercise {
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
     private Set<Activity> activities;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "exercises")
+    @ManyToMany(mappedBy = "exercises", cascade = CascadeType.ALL)
     private Set<Training> trainings;
 
     public Exercise() {

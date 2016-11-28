@@ -10,6 +10,8 @@ import net.bizarrerus.training_diary.service.interfaces.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ActivityServiceImpl implements ActivityService {
     @Autowired
@@ -27,6 +29,11 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public Activity get(int id) {
         return activityDao.get(id);
+    }
+
+    @Override
+    public List getAll() {
+        return activityDao.getAll();
     }
 
     @Override

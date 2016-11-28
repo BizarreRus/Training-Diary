@@ -30,11 +30,8 @@ public class ActivityTestController {
 
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public String addActivity(@ModelAttribute("activity") Activity activity,
-                              @RequestParam("exerciseID")int exerciseID,
-                              @RequestParam("trainingID")int trainingID) {
-        System.out.println("exerciseID => " +exerciseID
-                + ", trainingID => " + trainingID
-                + ", reps and weight => " + activity.getReps() + "/" + activity.getWeight());
+                              @RequestParam("exerciseID") int exerciseID,
+                              @RequestParam("trainingID") int trainingID) {
         activityService.save(activity, exerciseID, trainingID);
         return "redirect:/training";
     }

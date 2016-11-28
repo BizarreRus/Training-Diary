@@ -84,7 +84,12 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public void delete(int id) {
-        delete(get(id));
+        Training training = get(id);
+        for (Exercise exercise : training.getExercises()) {
+            exercise.getTrainings().remove(training);
+        }
+        training.getExercises().clear();
+        delete(training);
     }
 
     @Override

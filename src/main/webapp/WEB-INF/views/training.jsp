@@ -12,16 +12,19 @@
 Your's training list:<br>
 <c:if test="${!empty trainingList}">
     <c:forEach items="${trainingList}" var="training">
-        ID: ${training.id}.  DATE: ${training.trainingDate}  <a href="/deleteTraining/${training.id}">delete</a>
+        ID: ${training.id}. DATE: ${training.trainingDate}  <a href="/deleteTraining/${training.id}">delete</a>
         <a href="/editTraining/${training.id}">edit</a> <br>
         <c:if test="${!empty training.exercises}">
             EXERCISES LIST:<br>
             <c:forEach items="${training.exercises}" var="exer">
-                ${exer.exercise}      <a href="/activity/trainingID/${training.id}/exerciseID/${exer.id}">add activity</a>
-                <c:if test="${!empty exer.activities}">
+                ${exer.exercise}      <a href="/activity/trainingID/${training.id}/exerciseID/${exer.id}">add
+                activity</a>
+                <c:if test="${!empty activityList && !empty training.activities && !empty exer.activities}">
                     reps/weight:
-                    <c:forEach items="${exer.activities}" var="activity">
-                        ${activity.reps}/${activity.weight}.
+                    <c:forEach items="${activityList}" var="activity">
+                        <c:if test="${activity.exercise.id == exer.id && activity.training.id == training.id}">
+                            ${activity.reps}/${activity.weight}.
+                        </c:if>
                     </c:forEach>
                 </c:if>
                 <br>

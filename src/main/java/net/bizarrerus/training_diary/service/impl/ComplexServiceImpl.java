@@ -50,25 +50,6 @@ public class ComplexServiceImpl implements ComplexService {
     }
 
     @Override
-    @Transactional
-    public void deleteExercise(Exercise exercise){
-        for (Complex complex : exercise.getComplexes()) {
-            complex.getExercises().remove(exercise);
-            if (complex.getExercises().isEmpty()){
-                delete(complex.getId());
-            }
-        }
-        for (Activity activity : exercise.getActivities()) {
-            activity.setExercise(exercise);
-        }
-
-        exercise.getActivities().clear();
-        exercise.getComplexes().clear();
-
-        exerciseService.delete(exercise);
-    }
-
-    @Override
     public Complex get(int id) {
         return complexDao.get(id);
     }
