@@ -18,6 +18,9 @@ public class Training {
     @Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate trainingDate;
 
+    @Column(name = "description")
+    private String description;
+
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL)
     private Set<Activity> activities;
 

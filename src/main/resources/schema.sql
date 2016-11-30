@@ -41,6 +41,7 @@ CREATE TABLE user (
 CREATE TABLE training (
   id            INT PRIMARY KEY AUTO_INCREMENT,
   training_date DATE,
+  description VARCHAR(35),
   user_id       INT,
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
