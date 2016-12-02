@@ -1,0 +1,51 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #152b39;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.nav-side {
+    margin-top: 15px;
+}
+
+.my-font {
+    font-family: Georgia, serif;
+}
+
+.pill-color > li > a {
+    color: #339e69
+}
+
+.modal-header, .close {
+    background-color: #246e6c;
+    color: white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.color-class {
+    /* head/footer */
+    color: #152b39;
+    /* btn txt */
+    color: #dff0ff;
+}

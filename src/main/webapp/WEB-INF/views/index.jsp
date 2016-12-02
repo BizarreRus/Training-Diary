@@ -8,6 +8,7 @@
     <title>groups</title>
 </head>
 <body>
+<h3><a href="/trainings">GO TO TRAININGS PAGE!!</a></h3>
 <h4>Muscle Group Decs => </h4>
 <c:if test="${!empty muscleGroup.muscleGroup}">
     ${muscleGroup.muscleGroup}

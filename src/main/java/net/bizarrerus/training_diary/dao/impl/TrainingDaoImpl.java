@@ -12,7 +12,7 @@ public class TrainingDaoImpl extends BaseDaoImpl implements TrainingDao {
     @Override
     @Transactional
     public Training get(int id) {
-        return (Training) getSession().get(Training.class, id);
+        return getSession().get(Training.class, id);
     }
 
     @Override

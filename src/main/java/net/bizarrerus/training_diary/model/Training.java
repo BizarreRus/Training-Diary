@@ -49,6 +49,14 @@ public class Training {
         this.trainingDate = trainingDate;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Set<Activity> getActivities() {
         return activities;
     }
@@ -69,20 +77,19 @@ public class Training {
         return exercises;
     }
 
+    public void setExercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
+    }
 
     @Override
     public String toString() {
         return "Training{" +
                 "id=" + id +
-                ", date=" + trainingDate +
+                ", trainingDate=" + trainingDate +
+                ", description='" + description + '\'' +
                 ", activities=" + activities +
-                ", user=" + user +
-                ", exercises=" + exercises +
+                ", user=" + user.getUsername() +
+                ", exercises=" + exercises.size() +
                 '}';
     }
-
-    public void setExercises(Set<Exercise> exercises) {
-        this.exercises = exercises;
-    }
-
 }

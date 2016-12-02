@@ -1,7 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
 import net.bizarrerus.training_diary.dao.interfaces.ExerciseDao;
-import net.bizarrerus.training_diary.dao.interfaces.MuscleGroupDao;
 import net.bizarrerus.training_diary.model.*;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
@@ -10,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {

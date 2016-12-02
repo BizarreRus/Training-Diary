@@ -142,59 +142,62 @@
       <column id="39" parent="7" name="training_date">
         <data-type>date</data-type>
       </column>
-      <column id="40" parent="7" name="user_id">
+      <column id="40" parent="7" name="description">
+        <data-type>varchar(35)</data-type>
+      </column>
+      <column id="41" parent="7" name="user_id">
         <data-type>int(11)</data-type>
       </column>
-      <index id="41" parent="7" name="user_id">
+      <index id="42" parent="7" name="user_id">
         <columns>user_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="42" parent="7" name="PRIMARY">
+      <key id="43" parent="7" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="43" parent="7" name="training_ibfk_1">
+      <foreign-key id="44" parent="7" name="training_ibfk_1">
         <columns>user_id</columns>
         <ref-key>~.user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="44" parent="8" name="id">
+      <column id="45" parent="8" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="45" parent="8" name="username">
+      <column id="46" parent="8" name="username">
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="46" parent="8" name="password">
+      <column id="47" parent="8" name="password">
         <data-type>varchar(20)</data-type>
       </column>
-      <key id="47" parent="8" name="PRIMARY">
+      <key id="48" parent="8" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="48" parent="9" name="training_id">
+      <column id="49" parent="9" name="training_id">
         <data-type>int(11)</data-type>
       </column>
-      <column id="49" parent="9" name="exercise_id">
+      <column id="50" parent="9" name="exercise_id">
         <data-type>int(11)</data-type>
       </column>
-      <index id="50" parent="9" name="exercise_id">
+      <index id="51" parent="9" name="exercise_id">
         <columns>exercise_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="51" parent="9" name="training_id">
+      <index id="52" parent="9" name="training_id">
         <columns>training_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <foreign-key id="52" parent="9" name="training_exercise_ibfk_1">
+      <foreign-key id="53" parent="9" name="training_exercise_ibfk_1">
         <columns>training_id</columns>
         <ref-key>~.training.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="53" parent="9" name="training_exercise_ibfk_2">
+      <foreign-key id="54" parent="9" name="training_exercise_ibfk_2">
         <columns>exercise_id</columns>
         <ref-key>~.exercise.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>

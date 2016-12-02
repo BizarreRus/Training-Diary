@@ -12,7 +12,15 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="formattingConversionService"/>
+
+    <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <ref bean="muscleGroupFormatter"/>
+            </set>
+        </property>
+    </bean>
 
     <import resource="database.xml"/>
 

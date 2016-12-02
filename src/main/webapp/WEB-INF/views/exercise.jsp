@@ -17,16 +17,16 @@
 <br>
 <br>
 Add new Exercise:
-<form:form action="/addExercise" commandName="exercise" method="post">
+<form:form action="/createExercise" commandName="exercise" method="post">
     Insert exercise name: <form:input path="exercise"/>
     <br>
     Select Group:
-    <select name="groupName">
-        <option value="Default">Default</option>
-        <c:forEach items="${groupNames}" var="gName">
-            <option value="${gName}">${gName}</option>
-        </c:forEach>
-    </select>
+    <form:select path="muscleGroup">
+            <form:options items="${groupList}" itemValue="id" itemLabel="muscleGroup"/>
+    </form:select>
+    <br/>
+    <br/>*
+    <br/>
 
     <button type="submit">Add</button>
 </form:form>

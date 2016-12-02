@@ -16,7 +16,7 @@ public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao {
 
     @Override
     @Transactional
-    public List<Exercise> exercisesByGroupId(int group_id) {
+    public List exercisesByGroupId(int group_id) {
         Query query = getSession().createQuery("FROM Exercise E WHERE E.group_id  =:id");
         query.setParameter("id", group_id);
         return query.list();

@@ -11,15 +11,11 @@ import java.util.List;
 @Repository
 public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
 
-    public MuscleGroupDaoImpl() {
-    }
-
     @Override
     @Transactional
     public List getAll() {
         return getSession().createQuery("FROM MuscleGroup").list();
     }
-
 
     @Override
     @Transactional
@@ -42,7 +38,7 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
     @Override
     @Transactional
     public MuscleGroup get(int id) {
-        return (MuscleGroup) getSession().load(MuscleGroup.class, id);
+        return getSession().load(MuscleGroup.class, id);
     }
 
     @Override
