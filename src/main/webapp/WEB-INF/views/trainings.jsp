@@ -68,23 +68,24 @@
                     </thead>
                     <tbody>
 
-                    <c:if test="${!empty trainingList}">
-                        <c:forEach items="trainingList" var="training">
-                            <tr role="row">
-                                <td>${training.trainingDate}</td>
-                                <td>${training.description}</td>
-                                <td><a href="#deleteRowN" class="btn btn-xs btn-danger">Delete</a></td>
-                            </tr>
-                        </c:forEach>
-                    </c:if>
+                    <%--<tr role="row">--%>
+                        <%--<c:if test="${!empty trainingList}">--%>
+                            <%--<c:forEach items="trainingList" var="training">--%>
+                                <%--&lt;%&ndash;<td>${training.trainingDate}</td>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<td>${training.description}</td>&ndash;%&gt;--%>
+                                <%--<td><a href="#deleteRowN" class="btn btn-xs btn-danger">Delete</a></td>--%>
+                            <%--</c:forEach>--%>
+                        <%--</c:if>--%>
+                    <%--</tr>--%>
                     <c:if test="${empty trainingList}">
+                        <td valign="top" colspan="3" class="text-center">No data available in table</td>
                     </c:if>
-                    <td valign="top" colspan="3" class="text-center">No data available in table</td>
+
                     </tbody>
                 </table>
-                <c:if test="${!empty trainingList}">
-                    <div>Showing ${trainingList.size} entries</div>
-                </c:if>
+                <%--<c:if test="${trainingList != null}">--%>
+                <%--<div>Showing ${trainingList.size} entries</div>--%>
+                <%--</c:if>--%>
             </div>
         </div>
     </div>
@@ -94,11 +95,11 @@
 <!--  footer -->
 <footer class="footer my-font">
     <div class="container">
-        <p class="text-muted text-center">© 2016  Ruslan Borulchenko. All rights reserved.</p>
+        <p class="text-muted text-center">© 2016 Ruslan Borulchenko. All rights reserved.</p>
     </div>
 </footer>
 
-<!--   modal window -->
+<!--   modal-form window 4 create trainings -->
 <div class="modal fade" id="modal-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -110,28 +111,70 @@
 
             </div>
             <div class="modal-body">
-                <!--                  SHOULD FININSH IT, WHEN ADD THIS PIACE TO PROJECT! -->
-
-
-                <form class="form-horizontal" action="#createTraining">
+                <form:form class="form-horizontal" action="/createTraining" method="POST" commandName="training">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="date">Date:</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="date">
+                        <form:label cssClass="control-label col-sm-3" path="trainingDate">
+                            <spring:message text="Date:"/>
+                        </form:label>
+                        <div class="col-sm-8">
+                            <form:input cssClass="form-control" type="date" path="trainingDate"/>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="desc">Description:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="desc" placeholder="Some comment">
+                        <form:label cssClass="control-label col-sm-3" path="description">
+                            <spring:message text="Description:"/>
+                        </form:label>
+                        <div class="col-sm-8">
+                            <form:input cssClass="form-control" path="description" type="text"
+                                        placeholder="Some comment"/>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <form:label cssClass="control-label col-sm-3" path="exercises">
+                            <spring:message text="Add Exercises:"/>
+                        </form:label>
+
+                        <div class="tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="active col-sm-4 text-center"><a href="#tab-1" data-toggle="tab">From Exercise
+                                    List</a></li>
+                                <li class="col-sm-4 text-center"><a href="#tab-2" data-toggle="tab">From Complex
+                                    List</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab-1">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <br/>
+                                        <form:select cssClass="form-control" multiple="multiple" path="exercises">
+                                            <form:options items="${exerciseList}" itemValue="id"
+                                                          itemLabel="exercise"/>
+                                        </form:select>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tab-2">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <br/>
+                                        <select class="form-control" name="complexId">
+                                            <option value="0">Choose here</option>
+                                            <c:forEach items="${complexList}" var="complex">
+                                                <option value="${complex.id}">${complex.complex}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class=" col-sm-12">
                             <button type="submit" class="btn btn-primary btn-block">Create</button>
                         </div>
                     </div>
-                </form>
+                </form:form>
 
             </div>
         </div>

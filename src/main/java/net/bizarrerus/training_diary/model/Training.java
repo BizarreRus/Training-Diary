@@ -1,6 +1,7 @@
 package net.bizarrerus.training_diary.model;
 
 import net.bizarrerus.training_diary.converter.LocalDateAttributeConverter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class Training {
 
     @Column(name = "training_date")
     @Convert(converter = LocalDateAttributeConverter.class)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate trainingDate;
 
     @Column(name = "description")

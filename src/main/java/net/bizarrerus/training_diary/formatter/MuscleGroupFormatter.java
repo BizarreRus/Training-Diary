@@ -16,13 +16,7 @@ public class MuscleGroupFormatter implements Formatter<MuscleGroup> {
 
     @Override
     public MuscleGroup parse(String groupId, Locale locale) throws ParseException {
-        System.out.println("we are here now");
-        MuscleGroup muscleGroup = muscleGroupService.get(Integer.parseInt(groupId));
-        System.out.println("try to read it");
-        if (muscleGroup != null) {
-            System.out.println(muscleGroup.getMuscleGroup() + " and id " + muscleGroup.getId());
-        }
-        return muscleGroup;
+        return muscleGroupService.get(Integer.parseInt(groupId));
     }
 
     @Override

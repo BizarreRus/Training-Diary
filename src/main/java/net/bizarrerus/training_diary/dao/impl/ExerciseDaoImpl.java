@@ -10,10 +10,6 @@ import java.util.List;
 
 @Repository
 public class ExerciseDaoImpl extends BaseDaoImpl implements ExerciseDao {
-
-    public ExerciseDaoImpl() {
-    }
-
     @Override
     @Transactional
     public List exercisesByGroupId(int group_id) {

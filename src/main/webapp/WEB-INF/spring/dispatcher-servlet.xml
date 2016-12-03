@@ -18,6 +18,7 @@
         <property name="formatters">
             <set>
                 <ref bean="muscleGroupFormatter"/>
+                <ref bean="exerciseFormatter"/>
             </set>
         </property>
     </bean>

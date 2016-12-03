@@ -18,11 +18,14 @@
 <br>
 Add new Exercise:
 <form:form action="/createExercise" commandName="exercise" method="post">
-    Insert exercise name: <form:input path="exercise"/>
+    <form:label path="exercise">
+        <spring:message text="Insert exercise name:"/>
+    </form:label>
+    <form:input path="exercise"/>
     <br>
     Select Group:
     <form:select path="muscleGroup">
-            <form:options items="${groupList}" itemValue="id" itemLabel="muscleGroup"/>
+        <form:options items="${groupList}" itemValue="id" itemLabel="muscleGroup"/>
     </form:select>
     <br/>
     <br/>*
