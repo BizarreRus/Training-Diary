@@ -19,7 +19,7 @@ public class ExerciseTestContoller {
     @Autowired
     ExerciseService exerciseService;
 
-    @RequestMapping("/exercises")
+    @RequestMapping("/exercise")
     public String exercises(Model model) {
         model.addAttribute("exercises", exerciseService.getAll());
         model.addAttribute("groupNames", muscleGroupService.getGroupNames());

@@ -47,19 +47,19 @@
         <div class="row content">
             <div class="col-sm-2 sidenav nav-side">
                 <ul class="nav nav-pills nav-stacked pill-color">
-                    <li class="active"><a href=/trainings>Trainings</a></li>
-                    <li><a href="/exercises">Exercises</a></li>
+                    <li><a href=/trainings>Trainings</a></li>
+                    <li class="active"><a href="/exercises">Exercises</a></li>
                     <li><a href="/complexes">Complexes</a></li>
                 </ul>
             </div>
 
             <div class="col-sm-8">
-                <h2 style="text-align: center;">Trainings list</h2>
+                <h2 style="text-align: center;">Exercises list</h2>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr role="row">
-                        <th style="width: 175px;">Date</th>
-                        <th style="width: 450px;">Description</th>
+                        <th style="width: 175px;">Exercise name</th>
+                        <th style="width: 450px;">Muscle group</th>
                         <th style="width: 98px;">
                             <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                     data-target="#modal-1">
@@ -68,23 +68,24 @@
                         </th>
                     </thead>
                     <tbody>
-                    <c:if test="${!empty trainingList}">
-                        <c:forEach items="${trainingList}" var="tempTraining">
+                    <c:if test="${!empty exerciseList}">
+                        <c:forEach items="${exerciseList}" var="tempExercise">
                             <tr role="row">
-                                <td><a href="#training">${tempTraining.trainingDate}</a></td>
-                                <td>${tempTraining.description}</td>
-                                <td><a href="/deleteTraining${tempTraining.id}" class="btn btn-xs btn-danger">Delete</a></td>
+                                <td><a href="#exercise">${tempExercise.exercise}</a></td>
+                                <td>${tempExercise.muscleGroup}</td>
+                                <td><a href="/deleteExercise${tempExercise.id}" class="btn btn-xs btn-danger">Delete</a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:if>
-                    <c:if test="${empty trainingList}">
+                    <c:if test="${empty exerciseList}">
                         <td valign="top" colspan="3" class="text-center">No data available in table</td>
                     </c:if>
 
                     </tbody>
                 </table>
-                <c:if test="${!empty trainingList}">
-                    Showing ${fn:length(trainingList)} entries
+                <c:if test="${!empty exerciseList}">
+                    Showing ${fn:length(exerciseList)} entries
                 </c:if>
             </div>
         </div>
@@ -107,65 +108,30 @@
                 <button class="close" type="button" data-dismiss="modal">
                     &times;
                 </button>
-                <h3 style="text-align: center;" class="modal-title">Create training</h3>
+                <h3 style="text-align: center;" class="modal-title">Create exercise</h3>
 
             </div>
             <div class="modal-body">
-                <form:form class="form-horizontal" action="/createTraining" method="POST" commandName="training">
+                <form:form class="form-horizontal" action="/createExercise" method="POST" commandName="exercise">
                     <div class="form-group">
-                        <form:label cssClass="control-label col-sm-3" path="trainingDate">
-                            <spring:message text="Date:"/>
+                        <form:label cssClass="control-label col-sm-3" path="exercise">
+                            <spring:message text="Exercise name:"/>
                         </form:label>
                         <div class="col-sm-8">
-                            <form:input cssClass="form-control" type="date" path="trainingDate"/>
+                            <form:input cssClass="form-control" path="exercise" type="text"
+                                        placeholder="Insert exercise name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <form:label cssClass="control-label col-sm-3" path="description">
-                            <spring:message text="Description:"/>
+                        <form:label cssClass="control-label col-sm-3" path="muscleGroup">
+                            <spring:message text="Select mucle mroup:"/>
                         </form:label>
                         <div class="col-sm-8">
-                            <form:input cssClass="form-control" path="description" type="text"
-                                        placeholder="Some comment"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <form:label cssClass="control-label col-sm-3" path="exercises">
-                            <spring:message text="Add exercises:"/>
-                        </form:label>
-
-                        <div class="tabs">
-                            <ul class="nav nav-tabs">
-                                <li class="active col-sm-4 text-center"><a href="#tab-1" data-toggle="tab">From Complex
-                                    List</a></li>
-                                <li class="col-sm-4 text-center"><a href="#tab-2" data-toggle="tab">From Exercise
-                                    List</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="tab-1">
-                                    <div class="col-sm-8 col-sm-offset-3">
-                                        <br/>
-                                        <select class="form-control" name="complexId">
-                                            <option value="0">Choose here</option>
-                                            <c:forEach items="${complexList}" var="complex">
-                                                <option value="${complex.id}">${complex.complex}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab-2">
-                                    <div class="col-sm-8 col-sm-offset-3">
-                                        <br/>
-                                        <form:select cssClass="form-control" multiple="multiple" path="exercises">
-                                            <form:options items="${exerciseList}" itemValue="id"
-                                                          itemLabel="exercise"/>
-                                        </form:select>
-                                    </div>
-                                </div>
-                            </div>
+                            <form:select path="muscleGroup" cssClass="form-control">
+                                <form:options items="${muscleGroupList}" itemValue="id"
+                                              itemLabel="muscleGroup"/>
+                            </form:select>
                         </div>
                     </div>
 
@@ -175,7 +141,6 @@
                         </div>
                     </div>
                 </form:form>
-
             </div>
         </div>
     </div>

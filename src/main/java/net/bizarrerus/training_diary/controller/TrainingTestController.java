@@ -40,15 +40,6 @@ public class TrainingTestController {
     public String createTraining(@RequestParam("trainingDay") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
                                  @RequestParam(value = "exercisesID", required = false) List<Integer> exercisesID,
                                  @RequestParam(value = "complexID", required = false) Integer complexID) {
-
-        if (date != null && exercisesID != null) {
-            trainingService.save(date, exercisesID);
-        } else if (date != null && complexID > 0) {
-            System.out.println(complexID);
-            trainingService.save(date, complexID);
-        } else if (date != null) {
-            trainingService.save(date);
-        }
         return "redirect:/training";
     }
 

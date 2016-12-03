@@ -28,6 +28,11 @@ body {
     font-family: Georgia, serif;
 }
 
+/* 4 navbar-right height position */
+.my-height {
+    padding-top: 10px;
+}
+
 .pill-color > li > a {
     color: #339e69
 }

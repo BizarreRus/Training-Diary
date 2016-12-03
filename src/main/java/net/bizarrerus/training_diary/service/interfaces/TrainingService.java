@@ -11,12 +11,6 @@ public interface TrainingService {
 
     void save(Training training);
 
-    void save(LocalDate localDate);
-
-    void save(LocalDate localDate, int complexID);
-
-    void save(LocalDate localDate, List<Integer> exercisesID);
-
     void update(Training training);
 
     void delete(Training training);
