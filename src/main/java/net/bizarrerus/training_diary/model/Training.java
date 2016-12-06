@@ -17,7 +17,6 @@ public class Training {
 
     @Column(name = "training_date")
     @Convert(converter = LocalDateAttributeConverter.class)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate trainingDate;
 
     @Column(name = "description")

@@ -100,7 +100,7 @@
     </div>
 </footer>
 
-<!--   modal-form window 4 create trainings -->
+<!--   modal-form window 4 create exercise -->
 <div class="modal fade" id="modal-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -125,13 +125,14 @@
 
                     <div class="form-group">
                         <form:label cssClass="control-label col-sm-3" path="muscleGroup">
-                            <spring:message text="Select mucle mroup:"/>
+                            <spring:message text="Muscle group:"/>
                         </form:label>
                         <div class="col-sm-8">
-                            <form:select path="muscleGroup" cssClass="form-control">
-                                <form:options items="${muscleGroupList}" itemValue="id"
-                                              itemLabel="muscleGroup"/>
-                            </form:select>
+                            <select class="form-control" name="groupId">
+                                <c:forEach items="${muscleGroupList}" var="group">
+                                    <option value="${group.id}">${group.muscleGroup}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                     </div>
 

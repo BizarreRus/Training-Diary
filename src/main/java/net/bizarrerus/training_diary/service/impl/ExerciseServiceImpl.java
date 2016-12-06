@@ -5,6 +5,7 @@ import net.bizarrerus.training_diary.model.*;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;
+import net.bizarrerus.training_diary.service.interfaces.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,21 +20,20 @@ public class ExerciseServiceImpl implements ExerciseService {
     MuscleGroupService muscleGroupService;
     @Autowired
     ComplexService complexService;
+    @Autowired
+    TrainingService trainingService;
 
     @Override
-    @Transactional
     public List exercisesByGroupId(int group_id) {
         return exerciseDao.exercisesByGroupId(group_id);
     }
 
     @Override
-    @Transactional
     public List getAll() {
         return exerciseDao.getAll();
     }
 
     @Override
-    @Transactional
     public Exercise get(int id) {
         return exerciseDao.get(id);
     }
@@ -56,6 +56,9 @@ public class ExerciseServiceImpl implements ExerciseService {
         }
         for (Training training : exercise.getTrainings()) {
             training.getExercises().remove(exercise);
+            if (training.getExercises().isEmpty()) {
+                trainingService.delete(training.getId());
+            }
         }
         exercise.getTrainings().clear();
         exercise.getActivities().clear();
@@ -65,13 +68,19 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Override
-    @Transactional
     public void save(Exercise exercise) {
         exerciseDao.save(exercise);
     }
 
     @Override
-    @Transactional
+    public void save(Exercise exercise, int muscleGroupId) {
+        MuscleGroup muscleGroup = muscleGroupService.get(muscleGroupId);
+        exercise.setMuscleGroup(muscleGroup);
+        muscleGroup.getExerciseSet().add(exercise);
+        muscleGroupService.saveOrUpdate(muscleGroup);
+    }
+
+    @Override
     public void saveOrUpdate(Exercise exercise, String groupName) {
         MuscleGroup muscleGroup = muscleGroupService.getByName(groupName);
         exercise.setMuscleGroup(muscleGroup);

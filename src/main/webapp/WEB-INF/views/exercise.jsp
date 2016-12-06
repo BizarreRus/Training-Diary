@@ -33,6 +33,36 @@ Add new Exercise:
 
     <button type="submit">Add</button>
 </form:form>
+addExercise:
+<form:form class="form-horizontal" action="/addExercise" method="POST" commandName="exercise">
+    <form:label path="exercise">
+        <spring:message text="Exercise name:"/>
+    </form:label>
+    <form:input path="exercise" type="text"
+                placeholder="Insert exercise name"/>
+    <select class="form-control" name="groupName">
+        <c:forEach items="${groupList}" var="group">
+            <option value="${group.muscleGroup}">${group.muscleGroup}</option>
+        </c:forEach>
+    </select>
+
+    <button type="submit" class="btn btn-primary btn-block">Create</button>
+</form:form>
+Add new Exercise:
+<form:form action="/addExercise" commandName="exercise" method="post">
+    Insert exercise name: <form:input path="exercise"/>
+    <br>
+    Select Group:
+    <select name="groupName">
+        <option value="Default">Default</option>
+        <c:forEach items="${groupNames}" var="gName">
+            <option value="${gName}">${gName}</option>
+        </c:forEach>
+    </select>
+    <br/>
+
+    <button type="submit">Add</button>
+</form:form>
 
 <h2><a href="/complex">Go to complex test page </a></h2>
 

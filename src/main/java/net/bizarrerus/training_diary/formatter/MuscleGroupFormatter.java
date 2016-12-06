@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Locale;
-
+// Should study more about Formatters and conversionServices for correctly usage in project
+// For now not used
 @Component
 public class MuscleGroupFormatter implements Formatter<MuscleGroup> {
     @Autowired
@@ -21,6 +22,6 @@ public class MuscleGroupFormatter implements Formatter<MuscleGroup> {
 
     @Override
     public String print(MuscleGroup muscleGroup, Locale locale) {
-        return muscleGroup.getMuscleGroup();
+        return String.valueOf(muscleGroup.getId());
     }
 }

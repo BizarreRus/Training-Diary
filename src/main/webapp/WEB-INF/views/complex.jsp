@@ -28,27 +28,27 @@
 
 <br><br><br><br>
 Add new Complex:
-<%--<form:form action="/addComplex" commandName="complex" method="post">--%>
-    <%--Insert complex name: <form:input path="complex"/>--%>
-    <%--<br>--%>
-    <%--Select Exercises:--%>
-    <%--<select name="exercisesID" multiple="multiple">--%>
-        <%--<c:forEach items="${exercises}" var="exer">--%>
-            <%--<option value="${exer.id}">${exer.exercise}</option>--%>
-        <%--</c:forEach>--%>
-    <%--</select>--%>
-
-    <%--<button type="submit">Create complex</button>--%>
-<%--</form:form>--%>
-
-<form:form action="/createComplex" method="post" commandName="complex">
+<form:form action="/addComplex" commandName="complex" method="post">
     Insert complex name: <form:input path="complex"/>
     <br>
-    <form:select multiple="multiple" path="exercises">
-        <form:options items="${exercises}" itemValue="id" itemLabel="exercise" />
-    </form:select>
-    <button type="submit">Create complex</button>
+    Select Exercises:
+    <select name="exercisesID" multiple="multiple">
+        <c:forEach items="${exercises}" var="exer">
+            <option value="${exer.id}">${exer.exercise}</option>
+        </c:forEach>
+    </select>
+
+    <button type="submit">add complex</button>
 </form:form>
 
+
+<%--<form:form action="/createComplex" method="post" commandName="complex">--%>
+    <%--Insert complex name: <form:input path="complex"/>--%>
+    <%--<br>--%>
+    <%--<form:select multiple="true" path="exercises">--%>
+        <%--<form:options items="${exercises}" itemValue="id" itemLabel="exercise" />--%>
+    <%--</form:select>--%>
+    <%--<button type="submit">Create complex</button>--%>
+<%--</form:form>--%>
 </body>
 </html>

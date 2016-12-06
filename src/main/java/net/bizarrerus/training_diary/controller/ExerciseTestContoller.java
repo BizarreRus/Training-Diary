@@ -40,26 +40,26 @@ public class ExerciseTestContoller {
         return "redirect:/exercises";
     }
 
-    @RequestMapping(value = "/createExercise", method = RequestMethod.POST)
-    public String createExercise(@ModelAttribute("exercise") @Valid Exercise exercise, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            System.out.println("has errors!");
-            for (String s : result.getSuppressedFields()) {
-                System.out.println(s);
-            }
-            for (FieldError fieldError : result.getFieldErrors()) {
-                System.out.println("field = > " + fieldError.getField());
-                System.out.println("default message => " + fieldError.getDefaultMessage());
-                System.out.println("rejected value => " + fieldError.getRejectedValue());
-                System.out.println("code => " + fieldError.getCode());
-                System.out.println("obj name => " + fieldError.getObjectName());
-            }
-
-        }
-        if (exercise.getMuscleGroup() == null) {
-            System.out.println("is null");
-        }
-        exerciseService.save(exercise);
-        return "redirect:/exercises";
-    }
+//    @RequestMapping(value = "/createExercis", method = RequestMethod.POST)
+//    public String createExercise(@ModelAttribute("exercise") @Valid Exercise exercise, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            System.out.println("has errors!");
+//            for (String s : result.getSuppressedFields()) {
+//                System.out.println(s);
+//            }
+//            for (FieldError fieldError : result.getFieldErrors()) {
+//                System.out.println("field = > " + fieldError.getField());
+//                System.out.println("default message => " + fieldError.getDefaultMessage());
+//                System.out.println("rejected value => " + fieldError.getRejectedValue());
+//                System.out.println("code => " + fieldError.getCode());
+//                System.out.println("obj name => " + fieldError.getObjectName());
+//            }
+//
+//        }
+//        if (exercise.getMuscleGroup() == null) {
+//            System.out.println("is null");
+//        }
+//        exerciseService.save(exercise);
+//        return "redirect:/exercises";
+//    }
 }

@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Locale;
-
+// Should study more about Formatters and conversionServices for correctly usage in project
+// For now not used
 @Component
 public class ExerciseFormatter implements Formatter<Exercise> {
     @Autowired
@@ -21,6 +22,6 @@ public class ExerciseFormatter implements Formatter<Exercise> {
 
     @Override
     public String print(Exercise exercise, Locale locale) {
-        return exercise.getExercise();
+        return String.valueOf(exercise.getId());
     }
 }

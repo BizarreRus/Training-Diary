@@ -25,6 +25,7 @@ public class ComplexServiceImpl implements ComplexService {
     MuscleGroupService muscleGroupService;
 
     @Override
+    @Transactional
     public void save(Complex complex, List<Integer> exercisesID) {
         complex.setExercises(new HashSet<>());
         Exercise exercise;

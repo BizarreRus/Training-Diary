@@ -117,7 +117,7 @@
                             <spring:message text="Date:"/>
                         </form:label>
                         <div class="col-sm-8">
-                            <form:input cssClass="form-control" type="date" path="trainingDate"/>
+                            <input type="date" class="form-control" name="trainingDay">
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
                         </form:label>
                         <div class="col-sm-8">
                             <form:input cssClass="form-control" path="description" type="text"
-                                        placeholder="Some comment"/>
+                                        placeholder="Add comment"/>
                         </div>
                     </div>
 
@@ -159,10 +159,11 @@
                                 <div class="tab-pane fade" id="tab-2">
                                     <div class="col-sm-8 col-sm-offset-3">
                                         <br/>
-                                        <form:select cssClass="form-control" multiple="multiple" path="exercises">
-                                            <form:options items="${exerciseList}" itemValue="id"
-                                                          itemLabel="exercise"/>
-                                        </form:select>
+                                        <select  class="form-control" name="exercisesId" multiple="multiple">
+                                            <c:forEach items="${exerciseList}" var="exercise">
+                                                <option value="${exercise.id}">${exercise.exercise}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

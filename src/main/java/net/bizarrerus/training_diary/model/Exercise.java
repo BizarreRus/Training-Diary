@@ -18,7 +18,6 @@ public class Exercise {
 
     @ManyToOne
     @JoinColumn(name = "group_id")
-
     private MuscleGroup muscleGroup;
 
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)

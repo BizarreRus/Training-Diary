@@ -12,16 +12,16 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven conversion-service="formattingConversionService"/>
-
-    <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="formatters">
-            <set>
-                <ref bean="muscleGroupFormatter"/>
-                <ref bean="exerciseFormatter"/>
-            </set>
-        </property>
-    </bean>
+    <mvc:annotation-driven />
+<!-- Should study more about Formatter and conversionServices for correctly usage in project -->
+    <!--<bean id="conversionService2" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+        <!--<property name="formatters">-->
+            <!--<set>-->
+                <!--<ref bean="exerciseFormatter"/>-->
+                <!--&lt;!&ndash;<ref bean="muscleGroupFormatter"/>&ndash;&gt;-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <import resource="database.xml"/>
 
