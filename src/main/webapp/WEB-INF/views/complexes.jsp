@@ -48,18 +48,18 @@
             <div class="col-sm-2 sidenav nav-side">
                 <ul class="nav nav-pills nav-stacked pill-color">
                     <li><a href=/trainings>Trainings</a></li>
-                    <li class="active"><a href="/exercises">Exercises</a></li>
-                    <li><a href="/complexes">Complexes</a></li>
+                    <li><a href="/exercises">Exercises</a></li>
+                    <li class="active"><a href="/complexes">Complexes</a></li>
                 </ul>
             </div>
 
             <div class="col-sm-8">
-                <h2 style="text-align: center;">Exercises list</h2>
+                <h2 style="text-align: center;">Complexes list</h2>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr role="row">
-                        <th style="width: 175px;">Exercise</th>
-                        <th style="width: 450px;">Muscle group</th>
+                        <th style="width: 175px;">Complex</th>
+                        <th style="width: 450px;">Exercises</th>
                         <th style="width: 98px;">
                             <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                     data-target="#modal-1">
@@ -68,24 +68,29 @@
                         </th>
                     </thead>
                     <tbody>
-                    <c:if test="${!empty exerciseList}">
-                        <c:forEach items="${exerciseList}" var="tempExercise">
+                    <c:if test="${!empty complexList}">
+                        <c:forEach items="${complexList}" var="tempComplex">
                             <tr role="row">
-                                <td><a href="#exercise">${tempExercise.exercise}</a></td>
-                                <td>${tempExercise.muscleGroup}</td>
-                                <td><a href="/deleteExercise${tempExercise.id}" class="btn btn-xs btn-danger">Delete</a>
+                                <td><a href="#complex">${tempComplex.complex}</a></td>
+                                <td>
+                                    <c:forEach items="${tempComplex.exercises}" var="exercise">
+                                        ${exercise}.
+                                    </c:forEach>
+                                </td>
+                                        <%--${tempComplex.exercises}</td>--%>
+                                <td><a href="/deleteComplex${tempComplex.id}" class="btn btn-xs btn-danger">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
                     </c:if>
-                    <c:if test="${empty exerciseList}">
+                    <c:if test="${empty complexList}">
                         <td valign="top" colspan="3" class="text-center">No data available in table</td>
                     </c:if>
 
                     </tbody>
                 </table>
-                <c:if test="${!empty exerciseList}">
-                    Showing ${fn:length(exerciseList)} entries
+                <c:if test="${!empty complexList}">
+                    Showing ${fn:length(complexList)} entries
                 </c:if>
             </div>
         </div>
@@ -100,7 +105,7 @@
     </div>
 </footer>
 
-<!--   modal-form window 4 create exercise -->
+<!--   modal-form window 4 create trainings -->
 <div class="modal fade" id="modal-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -108,29 +113,30 @@
                 <button class="close" type="button" data-dismiss="modal">
                     &times;
                 </button>
-                <h3 style="text-align: center;" class="modal-title">Create exercise</h3>
-
+                <h3 style="text-align: center;" class="modal-title">Create training</h3>
             </div>
+
             <div class="modal-body">
-                <form:form class="form-horizontal" action="/createExercise" method="POST" commandName="exercise">
+                <form:form class="form-horizontal" action="/createComplex" method="POST" commandName="complex">
                     <div class="form-group">
-                        <form:label cssClass="control-label col-sm-3" path="exercise">
-                            <spring:message text="Exercise:"/>
+                        <form:label cssClass="control-label col-sm-3" path="complex">
+                            <spring:message text="Complex:"/>
                         </form:label>
                         <div class="col-sm-8">
-                            <form:input cssClass="form-control" path="exercise" type="text"
-                                        placeholder="Insert exercise name"/>
+                            <form:input cssClass="form-control" path="complex" type="text"
+                                        placeholder="Insert complex name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <form:label cssClass="control-label col-sm-3" path="muscleGroup">
-                            <spring:message text="Muscle group:"/>
+                        <form:label cssClass="control-label col-sm-3" path="exercises">
+                            <spring:message text="Add exercises:"/>
                         </form:label>
+
                         <div class="col-sm-8">
-                            <select class="form-control" name="groupId">
-                                <c:forEach items="${muscleGroupList}" var="group">
-                                    <option value="${group.id}">${group.muscleGroup}</option>
+                            <select class="form-control" name="exercisesId" multiple="multiple">
+                                <c:forEach items="${exerciseList}" var="exercise">
+                                    <option value="${exercise.id}">${exercise.exercise}</option>
                                 </c:forEach>
                             </select>
                         </div>
