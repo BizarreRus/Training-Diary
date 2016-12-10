@@ -1,5 +1,7 @@
 package net.bizarrerus.training_diary.controller;
 
+import net.bizarrerus.training_diary.model.Activity;
+import net.bizarrerus.training_diary.model.Training;
 import net.bizarrerus.training_diary.service.interfaces.ActivityService;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
@@ -29,11 +31,13 @@ public class TrainingTestController {
 
     @RequestMapping("/training")
     public String training(Model model) {
+        model.addAttribute("training", new Training());
+        model.addAttribute("activity", new Activity());
         model.addAttribute("exercises", exerciseService.getAll());
         model.addAttribute("complexList", complexService.getAll());
         model.addAttribute("trainingList", trainingService.getAll());
         model.addAttribute("activityList", activityService.getAll());
-        return "training";
+        return "trainings";
     }
 
     @RequestMapping(value = "/addTraining", method = RequestMethod.POST)

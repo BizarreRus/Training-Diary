@@ -9,8 +9,8 @@
 </head>
 <body>
 <form:form action="/addActivity" commandName="activity" method="post">
-    <input name="exerciseID" type="hidden" value="${exerciseID}">
-    <input name="trainingID" type="hidden" value="${trainingID}">
+    <input name="exerciseId" type="hidden" value="${exerciseID}">
+    <input name="trainingId" type="hidden" value="${trainingID}">
 
     <form:label path="reps">
         <spring:message text="insert reps"/>

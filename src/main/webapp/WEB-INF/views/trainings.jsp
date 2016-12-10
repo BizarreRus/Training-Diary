@@ -29,7 +29,7 @@
 <!--  navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a href="#Project" class="navbar-brand my-font">Training Diary App</a>
+        <a id="note" href="#Project" class="navbar-brand my-font">Training Diary App</a>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#profile">
                 <span class="glyphicon glyphicon-user my-height"> Profile</span>
@@ -55,42 +55,109 @@
 
             <div class="col-sm-8">
                 <h2 style="text-align: center;">Trainings list</h2>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr role="row">
-                        <th style="width: 175px;">Date</th>
-                        <th style="width: 450px;">Description</th>
-                        <th style="width: 98px;">
+
+                <div class="container">
+                    <div class="row training-accordion-padding">
+                        <div class="col-xs-4 col-md-3">
+                            <h4>Date:</h4>
+                        </div>
+                        <div class="col-xs-6 col-md-7">
+                            <h4>Description:</h4>
+                        </div>
+                        <div class="col-xs-2 training-create-btn-padding">
                             <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                     data-target="#modal-1">
                                 Create
                             </button>
-                        </th>
-                    </thead>
-                    <tbody>
-                    <c:if test="${!empty trainingList}">
-                        <c:forEach items="${trainingList}" var="tempTraining">
-                            <tr role="row">
-                                <td><a href="#training">${tempTraining.trainingDate}</a></td>
-                                <td>${tempTraining.description}</td>
-                                <td><a href="/deleteTraining${tempTraining.id}" class="btn btn-xs btn-danger">Delete</a></td>
-                            </tr>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${empty trainingList}">
-                        <td valign="top" colspan="3" class="text-center">No data available in table</td>
-                    </c:if>
+                        </div>
+                    </div>
+                </div>
 
-                    </tbody>
-                </table>
-                <c:if test="${!empty trainingList}">
-                    Showing ${fn:length(trainingList)} entries
-                </c:if>
+                <div class="container">
+                    <div class="panel-group" id="accordion">
+                        <c:forEach items="${trainingList}" var="tempTraining">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <div class="row">
+                                            <div class="col-xs-4 col-md-3">
+                                                <a class="href-color" data-toggle="collapse" data-parent="#accordion"
+                                                   href="#collapse${tempTraining.id}">${tempTraining.trainingDate}</a>
+                                            </div>
+                                            <div class="col-xs-6 col-md-7">
+                                                <a class="href-color" data-toggle="collapse" data-parent="#accordion"
+                                                   href="#collapse${tempTraining.id}">${tempTraining.description}</a>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <a class="btn btn-xs btn-danger"
+                                                   href="/deleteTraining${tempTraining.id}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </h4>
+                                </div>
+                                <div id="collapse${tempTraining.id}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <c:forEach items="${tempTraining.exercises}" var="tempExercise">
+                                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                                    <div class="thumbnail">
+                                                        <table class="table table-striped table-hover table-condensed">
+                                                            <thead>
+                                                            <tr role="row">
+                                                                <td style="font-weight: 500">${tempExercise.exercise}</td>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr role="row">
+                                                                <td class="activity-size">Reps:</td>
+
+                                                                <c:if test="${!empty activityList && !empty tempTraining.activities
+                                                                && !empty tempExercise.activities}">
+                                                                    <c:forEach items="${activityList}" var="activity">
+                                                                        <c:if test="${activity.exercise.id == tempExercise.id
+                                                                        && activity.training.id == tempTraining.id}">
+                                                                            <td class="activity-size">${activity.reps}</td>
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:if>
+                                                            </tr>
+
+                                                            <tr role="row">
+                                                                <td class="activity-size">Weight:</td>
+
+                                                                <c:if test="${!empty activityList && !empty tempTraining.activities
+                                                                && !empty tempExercise.activities}">
+                                                                    <c:forEach items="${activityList}" var="activity">
+                                                                        <c:if test="${activity.exercise.id == tempExercise.id
+                                                                        && activity.training.id == tempTraining.id}">
+                                                                            <td class="activity-size">${activity.weight}</td>
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:if>
+                                                            </tr>
+                                                            <tr role="row">
+                                                                <td><a href="#addActivity" data-toggle="modal"
+                                                                       data-id="${tempTraining.id}"
+                                                                       class="center-block btn btn-xs btn-primary open-AddActivity"
+                                                                >Add activity</a></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
-
 
 <!--  footer -->
 <footer class="footer my-font">
@@ -159,7 +226,7 @@
                                 <div class="tab-pane fade" id="tab-2">
                                     <div class="col-sm-8 col-sm-offset-3">
                                         <br/>
-                                        <select  class="form-control" name="exercisesId" multiple="multiple">
+                                        <select class="form-control" name="exercisesId" multiple="multiple">
                                             <c:forEach items="${exerciseList}" var="exercise">
                                                 <option value="${exercise.id}">${exercise.exercise}</option>
                                             </c:forEach>
@@ -187,5 +254,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../../bootstrap-3.3.7-dist/js/app.js"></script>
 </body>
 </html>

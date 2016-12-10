@@ -40,6 +40,6 @@
 <br>
 <h2><a href="/exercises">Go to exercise test page </a></h2>
 <br>
-<h2><a href="/training">Go to training test page </a></h2>
+<h2><a href="/trainings">Go to training test page </a></h2>
 </body>
 </html>

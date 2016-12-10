@@ -30,9 +30,24 @@ public class ActivityTestController {
 
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public String addActivity(@ModelAttribute("activity") Activity activity,
-                              @RequestParam("exerciseID") int exerciseID,
-                              @RequestParam("trainingID") int trainingID) {
-        activityService.save(activity, exerciseID, trainingID);
+                              @RequestParam(value = "exerciseId", required = false) int exerciseId,
+                              @RequestParam(value = "trainingId", required = false) int trainingId) {
+        System.out.println("test msg");
+        activityService.save(activity, exerciseId, trainingId);
+        return "redirect:/training";
+    }
+
+    @RequestMapping(value = "/createActivity", method = RequestMethod.POST)
+    public String createActivity(@RequestParam(value = "reps", required = false) int reps,
+                                 @RequestParam(value = "weight", required = false) int weight,
+                                 @RequestParam(value = "exerciseId", required = false) int exerciseId,
+                                 @RequestParam(value = "trainingId", required = false) int trainingId) {
+        System.out.println("reps = " + reps + ". weight = " + weight
+                + "exerciseId= " + exerciseId + ". trainingId = " + trainingId);
+        Activity activity = new Activity();
+        activity.setReps(reps);
+        activity.setWeight(weight);
+        activityService.save(activity, exerciseId, trainingId);
         return "redirect:/training";
     }
 }

@@ -33,6 +33,19 @@ body {
     padding-top: 10px;
 }
 
+.training-accordion-padding {
+    padding: 10px 15px;
+}
+
+.activity-size {
+    font-size: 12px;
+}
+
+.training-create-btn-padding {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
 .pill-color > li > a {
     color: #339e69
 }
@@ -46,6 +59,10 @@ body {
 
 .modal-footer {
     background-color: #f9f9f9;
+}
+
+.href-color {
+    color: #246e6c;
 }
 
 .color-class {

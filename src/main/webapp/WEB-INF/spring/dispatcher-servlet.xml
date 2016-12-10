@@ -13,6 +13,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <mvc:annotation-driven />
+
 <!-- Should study more about Formatter and conversionServices for correctly usage in project -->
     <!--<bean id="conversionService2" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
         <!--<property name="formatters">-->
