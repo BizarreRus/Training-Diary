@@ -37,7 +37,7 @@ public class TrainingTestController {
         model.addAttribute("complexList", complexService.getAll());
         model.addAttribute("trainingList", trainingService.getAll());
         model.addAttribute("activityList", activityService.getAll());
-        return "trainings";
+        return "training";
     }
 
     @RequestMapping(value = "/addTraining", method = RequestMethod.POST)

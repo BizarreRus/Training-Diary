@@ -23,6 +23,14 @@ public class Activity {
     @JoinColumn(name = "training_id")
     private Training training;
 
+    public Activity() {
+    }
+
+    public Activity(Integer reps, Integer weight) {
+        this.reps = reps;
+        this.weight = weight;
+    }
+
     public int getId() {
         return id;
     }

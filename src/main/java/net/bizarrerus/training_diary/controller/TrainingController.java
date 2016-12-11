@@ -1,6 +1,8 @@
 package net.bizarrerus.training_diary.controller;
 
+import net.bizarrerus.training_diary.model.Activity;
 import net.bizarrerus.training_diary.model.Training;
+import net.bizarrerus.training_diary.service.interfaces.ActivityService;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.TrainingService;
@@ -21,13 +23,17 @@ public class TrainingController {
     ExerciseService exerciseService;
     @Autowired
     ComplexService complexService;
+    @Autowired
+    ActivityService activityService;
 
     @RequestMapping("/trainings")
     public String trainings(Model model) {
+        model.addAttribute("activity", new Activity());
         model.addAttribute("training", new Training());
         model.addAttribute("trainingList", trainingService.getAll());
         model.addAttribute("exerciseList", exerciseService.getAll());
         model.addAttribute("complexList", complexService.getAll());
+        model.addAttribute("activityList", activityService.getAll());
         return "trainings";
     }
 

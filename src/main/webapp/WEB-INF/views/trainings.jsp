@@ -99,13 +99,20 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <c:forEach items="${tempTraining.exercises}" var="tempExercise">
-                                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                                <div class="col-xs-6 col-md-4 col-lg-3">
                                                     <div class="thumbnail">
                                                         <table class="table table-striped table-hover table-condensed">
                                                             <thead>
-                                                            <tr role="row">
-                                                                <td style="font-weight: 500">${tempExercise.exercise}</td>
-                                                            </tr>
+                                                            <i style="font-weight: 600">
+                                                                <a id="activityLink${tempTraining.id}${tempExercise.id}"
+                                                                   href="#addActivity"
+                                                                   data-toggle="modal"
+                                                                   data-id='{"trainingId":${tempTraining.id}, "exerciseId":${tempExercise.id}}'
+                                                                   class="open-AddActivity href-color">
+                                                                    <span class="glyphicon glyphicon-plus-sign pull-right"></span>
+                                                                </a>
+                                                                    ${tempExercise.exercise}
+                                                            </i>
                                                             </thead>
                                                             <tbody>
                                                             <tr role="row">
@@ -122,7 +129,7 @@
                                                                 </c:if>
                                                             </tr>
 
-                                                            <tr role="row">
+                                                            <tr>
                                                                 <td class="activity-size">Weight:</td>
 
                                                                 <c:if test="${!empty activityList && !empty tempTraining.activities
@@ -135,12 +142,6 @@
                                                                     </c:forEach>
                                                                 </c:if>
                                                             </tr>
-                                                            <tr role="row">
-                                                                <td><a href="#addActivity" data-toggle="modal"
-                                                                       data-id="${tempTraining.id}"
-                                                                       class="center-block btn btn-xs btn-primary open-AddActivity"
-                                                                >Add activity</a></td>
-                                                            </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -152,7 +153,50 @@
                             </div>
                         </c:forEach>
                     </div>
+                    Showing <c:out value="${empty trainingList ? 0 : fn:length(trainingList)}"/> entries
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%-- modal for create activity --%>
+<div class="modal fade" id="addActivity">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">
+                    &times;
+                </button>
+                <h3 style="text-align: center;" class="modal-title">Create activity</h3>
+
+            </div>
+            <div class="modal-body">
+                <form:form class="form-horizontal" action="/createActivity" method="POST" commandName="activity">
+                    <input type="text" name="trainingId" id="trainingId" hidden/>
+                    <input type="text" name="exerciseId" id="exerciseId" hidden/>
+                    <div class="form-group">
+                        <form:label cssClass="control-label col-sm-3" path="reps">
+                            <spring:message text="Reps:"/>
+                        </form:label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="reps" placeholder="Add reps"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <form:label cssClass="control-label col-sm-3" path="weight">
+                            <spring:message text="Weight:"/>
+                        </form:label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="weight" placeholder="Add weight"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class=" col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-block">Create</button>
+                        </div>
+                    </div>
+                </form:form>
 
             </div>
         </div>

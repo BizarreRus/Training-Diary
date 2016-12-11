@@ -71,13 +71,12 @@
                     <c:if test="${!empty complexList}">
                         <c:forEach items="${complexList}" var="tempComplex">
                             <tr role="row">
-                                <td><a href="#complex">${tempComplex.complex}</a></td>
+                                <td><a class="href-color" href="#complex">${tempComplex.complex}</a></td>
                                 <td>
                                     <c:forEach items="${tempComplex.exercises}" var="exercise">
                                         ${exercise}.
                                     </c:forEach>
                                 </td>
-                                        <%--${tempComplex.exercises}</td>--%>
                                 <td><a href="/deleteComplex${tempComplex.id}" class="btn btn-xs btn-danger">Delete</a>
                                 </td>
                             </tr>
@@ -89,9 +88,7 @@
 
                     </tbody>
                 </table>
-                <c:if test="${!empty complexList}">
-                    Showing ${fn:length(complexList)} entries
-                </c:if>
+                Showing <c:out value="${empty complexList ? 0 : fn:length(complexList)}"/> entries
             </div>
         </div>
     </div>
@@ -105,7 +102,7 @@
     </div>
 </footer>
 
-<!--   modal-form window 4 create trainings -->
+<!--   modal-form window 4 create complex -->
 <div class="modal fade" id="modal-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -113,7 +110,7 @@
                 <button class="close" type="button" data-dismiss="modal">
                     &times;
                 </button>
-                <h3 style="text-align: center;" class="modal-title">Create training</h3>
+                <h3 style="text-align: center;" class="modal-title">Create complex</h3>
             </div>
 
             <div class="modal-body">

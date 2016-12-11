@@ -71,7 +71,7 @@
                     <c:if test="${!empty exerciseList}">
                         <c:forEach items="${exerciseList}" var="tempExercise">
                             <tr role="row">
-                                <td><a href="#exercise">${tempExercise.exercise}</a></td>
+                                <td><a class="href-color" href="#exercise">${tempExercise.exercise}</a></td>
                                 <td>${tempExercise.muscleGroup}</td>
                                 <td><a href="/deleteExercise${tempExercise.id}" class="btn btn-xs btn-danger">Delete</a>
                                 </td>
@@ -84,9 +84,7 @@
 
                     </tbody>
                 </table>
-                <c:if test="${!empty exerciseList}">
-                    Showing ${fn:length(exerciseList)} entries
-                </c:if>
+                Showing <c:out value="${empty exerciseList ? 0 : fn:length(exerciseList)}"/> entries
             </div>
         </div>
     </div>

@@ -37,17 +37,17 @@ public class ActivityTestController {
         return "redirect:/training";
     }
 
-    @RequestMapping(value = "/createActivity", method = RequestMethod.POST)
-    public String createActivity(@RequestParam(value = "reps", required = false) int reps,
-                                 @RequestParam(value = "weight", required = false) int weight,
-                                 @RequestParam(value = "exerciseId", required = false) int exerciseId,
-                                 @RequestParam(value = "trainingId", required = false) int trainingId) {
-        System.out.println("reps = " + reps + ". weight = " + weight
-                + "exerciseId= " + exerciseId + ". trainingId = " + trainingId);
-        Activity activity = new Activity();
-        activity.setReps(reps);
-        activity.setWeight(weight);
-        activityService.save(activity, exerciseId, trainingId);
-        return "redirect:/training";
-    }
+//    @RequestMapping(value = "/createActivity", method = RequestMethod.POST)
+//    public String createActivity(@RequestParam(value = "reps", required = false) int reps,
+//                                 @RequestParam(value = "weight", required = false) int weight,
+//                                 @RequestParam(value = "exerciseId", required = false) int exerciseId,
+//                                 @RequestParam(value = "trainingId", required = false) int trainingId) {
+//        System.out.println("reps = " + reps + ". weight = " + weight
+//                + "exerciseId= " + exerciseId + ". trainingId = " + trainingId);
+//        Activity activity = new Activity();
+//        activity.setReps(reps);
+//        activity.setWeight(weight);
+//        activityService.save(activity, exerciseId, trainingId);
+//        return "redirect:/training";
+//    }
 }

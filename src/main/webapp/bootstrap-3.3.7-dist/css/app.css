@@ -37,6 +37,10 @@ body {
     padding: 10px 15px;
 }
 
+.training-panel-color  {
+    background-color: #f8fafb;
+}
+
 .activity-size {
     font-size: 12px;
 }
