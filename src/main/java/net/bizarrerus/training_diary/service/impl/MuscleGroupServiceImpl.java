@@ -45,13 +45,13 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
 
     @Override
     @Transactional
-    public void delete(MuscleGroup muscleGroup) {
-        muscleGroupDao.delete(muscleGroup);
+    public void delete(int id) {
+        delete(get(id));
     }
 
     @Override
     @Transactional
-    public void deleteGroup(MuscleGroup muscleGroup) {
+    public void delete(MuscleGroup muscleGroup) {
         MuscleGroup defaultGroup = getByName("Default");
         Set<Exercise> exercises = muscleGroup.getExerciseSet();
         for (Exercise exercise : exercises) {
@@ -60,7 +60,7 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
         defaultGroup.getExerciseSet().addAll(exercises);
         saveOrUpdate(defaultGroup);
         muscleGroup.getExerciseSet().clear();
-        delete(muscleGroup);
+        muscleGroupDao.delete(muscleGroup);
     }
 
     @Override

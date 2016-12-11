@@ -40,12 +40,12 @@ public class MuscleGroupTestController {
 
     @RequestMapping("/removeGroup")
     public String removeGroup(@RequestParam("groupName") String name){
-        muscleGroupService.deleteGroup(muscleGroupService.getByName(name));
+        muscleGroupService.delete(muscleGroupService.getByName(name));
         return "redirect:/";
     }
     @RequestMapping("/delete/{id}")
     public String removeGroup(@PathVariable("id") int id){
-        muscleGroupService.deleteGroup(muscleGroupService.get(id));
+        muscleGroupService.delete(id);
         return "redirect:/";
     }
 }

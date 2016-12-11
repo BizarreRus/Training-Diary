@@ -18,7 +18,7 @@ public interface MuscleGroupService {
 
     List getGroupNames();
 
-    void deleteGroup(MuscleGroup muscleGroup);
+    void delete(int id);
 
     void update(MuscleGroup muscleGroup);
 }

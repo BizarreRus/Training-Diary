@@ -48,8 +48,9 @@
             <div class="col-sm-2 sidenav nav-side">
                 <ul class="nav nav-pills nav-stacked pill-color">
                     <li class="active"><a href=/trainings>Trainings</a></li>
-                    <li><a href="/exercises">Exercises</a></li>
                     <li><a href="/complexes">Complexes</a></li>
+                    <li><a href="/exercises">Exercises</a></li>
+                    <li><a href="/muscleGroups">Muscle Groups</a></li>
                 </ul>
             </div>
 
