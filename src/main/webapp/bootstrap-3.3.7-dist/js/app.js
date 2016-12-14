@@ -18,3 +18,10 @@ $(document).on("click", ".open-EditExercise", function () {
     $(".modal-body #exerciseId").val(exerciseId);
     $(".modal-body #exerciseName").val(exerciseName);
 });
+
+$(document).on("click", ".open-EditComplex", function () {
+    var complexId = $(this).data('id');
+    var complexName = $(this).data('name');
+    $(".modal-body #complexId").val(complexId);
+    $(".modal-body #complexName").val(complexName);
+});

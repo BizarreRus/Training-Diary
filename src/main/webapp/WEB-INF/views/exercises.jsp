@@ -73,8 +73,7 @@
                         <c:forEach items="${exerciseList}" var="tempExercise">
                             <tr role="row">
                                 <td>
-                                        <%--<a class="href-color" href="#exercise">${tempExercise.exercise}</a>--%>
-                                    <a id="groupLink${tempExercise.id}"
+                                    <a id="exerciseLink${tempExercise.id}"
                                        href="#editExercise"
                                        data-toggle="modal"
                                        data-id="${tempExercise.id}"

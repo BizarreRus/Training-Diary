@@ -72,7 +72,14 @@
                     <c:if test="${!empty complexList}">
                         <c:forEach items="${complexList}" var="tempComplex">
                             <tr role="row">
-                                <td><a class="href-color" href="#complex">${tempComplex.complex}</a></td>
+                                <td>
+                                    <a id="complexLink${tempComplex.id}"
+                                       href="#editComplex"
+                                       data-toggle="modal"
+                                       data-id="${tempComplex.id}"
+                                       data-name="${tempComplex.complex}"
+                                       class="open-EditComplex href-color">${tempComplex.complex}
+                                </td>
                                 <td>
                                     <c:forEach items="${tempComplex.exercises}" var="exercise">
                                         ${exercise}.
@@ -95,13 +102,61 @@
     </div>
 </div>
 
-
 <!--  footer -->
 <footer class="footer my-font">
     <div class="container">
         <p class="text-muted text-center">© 2016 Ruslan Borulchenko. All rights reserved.</p>
     </div>
 </footer>
+
+<!--   modal-form window 4 edit complex -->
+<div class="modal fade" id="editComplex">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">
+                    &times;
+                </button>
+                <h3 style="text-align: center;" class="modal-title">Edit complex</h3>
+            </div>
+
+            <div class="modal-body">
+                <form:form class="form-horizontal" action="/createComplex" method="POST" commandName="complex">
+                    <form:hidden path="id" id="complexId"/>
+                    <div class="form-group">
+                        <form:label cssClass="control-label col-sm-3" path="complex">
+                            <spring:message text="Complex:"/>
+                        </form:label>
+                        <div class="col-sm-8">
+                            <form:input id="complexName" cssClass="form-control" path="complex" type="text"
+                                        placeholder="Insert complex name"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <form:label cssClass="control-label col-sm-3" path="exercises">
+                            <spring:message text="Add exercises:"/>
+                        </form:label>
+
+                        <div class="col-sm-8">
+                            <select class="form-control" name="exercisesId" multiple="multiple">
+                                <c:forEach items="${exerciseList}" var="exercise">
+                                    <option value="${exercise.id}">${exercise.exercise}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class=" col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-block">Edit</button>
+                        </div>
+                    </div>
+                </form:form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--   modal-form window 4 create complex -->
 <div class="modal fade" id="modal-1">
@@ -156,5 +211,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../../bootstrap-3.3.7-dist/js/app.js"></script>
 </body>
 </html>

@@ -26,11 +26,12 @@ public class ComplexServiceImpl implements ComplexService {
 
     @Override
     @Transactional
-    public void save(Complex complex, List<Integer> exercisesID) {
+    public void saveOrUpdate(Complex complex, List<Integer> exercisesID) {
         complex.setExercises(new HashSet<>());
         Exercise exercise;
         for (Integer id : exercisesID) {
             exercise = exerciseService.get(id);
+            exercise.getComplexes().removeIf(comp -> comp.getId() == complex.getId());
             exercise.getComplexes().add(complex);
             complex.getExercises().add(exercise);
             muscleGroupService.saveOrUpdate(exercise.getMuscleGroup());

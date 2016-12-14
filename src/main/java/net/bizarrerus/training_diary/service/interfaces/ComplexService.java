@@ -6,7 +6,7 @@ import net.bizarrerus.training_diary.model.Exercise;
 import java.util.List;
 
 public interface ComplexService {
-    void save(Complex complex, List<Integer> exercisesID);
+    void saveOrUpdate(Complex complex, List<Integer> exercisesID);
 
     void save(Complex complex);
 

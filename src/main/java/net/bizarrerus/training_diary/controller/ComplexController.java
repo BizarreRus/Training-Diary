@@ -28,7 +28,7 @@ public class ComplexController {
     @RequestMapping(value = "/createComplex", method = RequestMethod.POST)
     public String createTraining(@RequestParam(value = "exercisesId") List<Integer> exercisesId,
                                  @ModelAttribute("complex") Complex complex) {
-        complexService.save(complex, exercisesId);
+        complexService.saveOrUpdate(complex, exercisesId);
         return "redirect:/complexes";
     }
 
