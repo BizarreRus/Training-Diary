@@ -17,9 +17,7 @@ public interface ExerciseService {
 
     void save(Exercise exercise);
 
-    void save(Exercise exercise, int muscleGroupId);
-
-    void saveOrUpdate(Exercise exercise, String groupName);
+    void saveOrUpdate(Exercise exercise, int muscleGroupId);
 
     void update(Exercise exercise);
 }

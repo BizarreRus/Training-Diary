@@ -27,7 +27,7 @@ public class ExerciseController {
     @RequestMapping(value = "/createExercise", method = RequestMethod.POST)
     public String createExercise(@ModelAttribute("exercise") Exercise exercise,
                                  @RequestParam(value = "groupId") int groupId) {
-        exerciseService.save(exercise, groupId);
+        exerciseService.saveOrUpdate(exercise, groupId);
         return "redirect:/exercises";
     }
 

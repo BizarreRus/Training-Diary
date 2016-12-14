@@ -73,17 +73,10 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Override
-    public void save(Exercise exercise, int muscleGroupId) {
+    public void saveOrUpdate(Exercise exercise, int muscleGroupId) {
         MuscleGroup muscleGroup = muscleGroupService.get(muscleGroupId);
         exercise.setMuscleGroup(muscleGroup);
-        muscleGroup.getExerciseSet().add(exercise);
-        muscleGroupService.saveOrUpdate(muscleGroup);
-    }
-
-    @Override
-    public void saveOrUpdate(Exercise exercise, String groupName) {
-        MuscleGroup muscleGroup = muscleGroupService.getByName(groupName);
-        exercise.setMuscleGroup(muscleGroup);
+        muscleGroup.getExerciseSet().removeIf(exer -> exer.getId() == exercise.getId());
         muscleGroup.getExerciseSet().add(exercise);
         muscleGroupService.saveOrUpdate(muscleGroup);
     }

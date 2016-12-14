@@ -75,8 +75,8 @@
                                     <a id="groupLink${tempGroup.id}"
                                        href="#editGroup"
                                        data-toggle="modal"
-                                       data-name="${tempGroup.muscleGroup}"
                                        data-id="${tempGroup.id}"
+                                       data-name="${tempGroup.muscleGroup}"
                                        class="open-EditGroup href-color">${tempGroup.muscleGroup}
                                 </td>
                                 <td><a href="/deleteMuscleGroup${tempGroup.id}" class="btn btn-xs btn-danger">Delete</a>

@@ -6,8 +6,15 @@ $(document).on("click", ".open-AddActivity", function () {
 });
 
 $(document).on("click", ".open-EditGroup", function () {
-    var groupName = $(this).data('name');
     var groupId = $(this).data('id');
-    $(".modal-body #groupName").val(groupName);
+    var groupName = $(this).data('name');
     $(".modal-body #groupId").val(groupId);
+    $(".modal-body #groupName").val(groupName);
+});
+
+$(document).on("click", ".open-EditExercise", function () {
+    var exerciseId = $(this).data('id');
+    var exerciseName = $(this).data('name');
+    $(".modal-body #exerciseId").val(exerciseId);
+    $(".modal-body #exerciseName").val(exerciseName);
 });

@@ -6,6 +6,7 @@ import net.bizarrerus.training_diary.service.interfaces.ActivityService;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
 import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.TrainingService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import static org.slf4j.LoggerFactory.getLogger;
 
 @Controller
 public class TrainingController {
+    private static final Logger LOGGER = getLogger(TrainingController.class);
     @Autowired
     TrainingService trainingService;
     @Autowired
@@ -34,6 +37,7 @@ public class TrainingController {
         model.addAttribute("exerciseList", exerciseService.getAll());
         model.addAttribute("complexList", complexService.getAll());
         model.addAttribute("activityList", activityService.getAll());
+        LOGGER.debug("forward to trainings");
         return "trainings";
     }
 
