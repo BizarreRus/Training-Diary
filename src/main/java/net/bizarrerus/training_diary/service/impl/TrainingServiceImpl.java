@@ -1,6 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.TrainingDao;
+import net.bizarrerus.training_diary.repository.interfaces.TrainingDao;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.model.Training;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
@@ -8,7 +8,6 @@ import net.bizarrerus.training_diary.service.interfaces.ExerciseService;
 import net.bizarrerus.training_diary.service.interfaces.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;

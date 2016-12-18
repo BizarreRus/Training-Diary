@@ -1,7 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.ComplexDao;
-import net.bizarrerus.training_diary.model.Activity;
+import net.bizarrerus.training_diary.repository.interfaces.ComplexDao;
 import net.bizarrerus.training_diary.model.Complex;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ComplexServiceImpl implements ComplexService {

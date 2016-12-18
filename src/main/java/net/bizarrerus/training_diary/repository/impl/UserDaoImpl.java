@@ -1,6 +1,6 @@
-package net.bizarrerus.training_diary.dao.impl;
+package net.bizarrerus.training_diary.repository.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.UserDao;
+import net.bizarrerus.training_diary.repository.interfaces.UserDao;
 import net.bizarrerus.training_diary.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

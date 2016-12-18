@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.controller;
+package net.bizarrerus.training_diary.web;
 
 import net.bizarrerus.training_diary.model.Complex;
 import net.bizarrerus.training_diary.service.interfaces.ComplexService;
@@ -26,7 +26,7 @@ public class ComplexController {
     }
 
     @RequestMapping(value = "/createComplex", method = RequestMethod.POST)
-    public String createTraining(@RequestParam(value = "exercisesId") List<Integer> exercisesId,
+    public String createTraining(@RequestParam(value = "exercisesId", required = false) List<Integer> exercisesId,
                                  @ModelAttribute("complex") Complex complex) {
         complexService.saveOrUpdate(complex, exercisesId);
         return "redirect:/complexes";

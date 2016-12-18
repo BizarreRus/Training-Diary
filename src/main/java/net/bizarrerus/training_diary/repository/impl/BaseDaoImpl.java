@@ -1,6 +1,6 @@
-package net.bizarrerus.training_diary.dao.impl;
+package net.bizarrerus.training_diary.repository.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.BaseDao;
+import net.bizarrerus.training_diary.repository.interfaces.BaseDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

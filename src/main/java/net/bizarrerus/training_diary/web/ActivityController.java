@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.controller;
+package net.bizarrerus.training_diary.web;
 
 import net.bizarrerus.training_diary.model.Activity;
 import net.bizarrerus.training_diary.service.interfaces.ActivityService;

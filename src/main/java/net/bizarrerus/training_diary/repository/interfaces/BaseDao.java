@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.dao.interfaces;
+package net.bizarrerus.training_diary.repository.interfaces;
 
 import org.hibernate.Session;
 

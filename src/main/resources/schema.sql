@@ -10,19 +10,19 @@ DROP TABLE IF EXISTS muscle_group;
 
 CREATE TABLE muscle_group (
   id           INT AUTO_INCREMENT PRIMARY KEY,
-  muscle_group VARCHAR(20)
+  muscle_group VARCHAR(40)
 );
 
 CREATE TABLE exercise (
   id       INT PRIMARY KEY AUTO_INCREMENT,
-  exercise VARCHAR(20) NOT NULL,
+  exercise VARCHAR(60) NOT NULL,
   group_id INT,
   FOREIGN KEY (group_id) REFERENCES muscle_group (id)
 );
 
 CREATE TABLE complex (
   id      INT PRIMARY KEY AUTO_INCREMENT,
-  complex VARCHAR(20) NOT NULL
+  complex VARCHAR(60) NOT NULL
 );
 
 CREATE TABLE complex_exercise (
@@ -34,14 +34,14 @@ CREATE TABLE complex_exercise (
 
 CREATE TABLE user (
   id       INT PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(20),
-  password VARCHAR(20)
+  username VARCHAR(40),
+  password VARCHAR(40)
 );
 
 CREATE TABLE training (
   id            INT PRIMARY KEY AUTO_INCREMENT,
   training_date DATE,
-  description VARCHAR(35),
+  description   VARCHAR(35),
   user_id       INT,
   FOREIGN KEY (user_id) REFERENCES user (id)
 );

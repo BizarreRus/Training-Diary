@@ -1,6 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.MuscleGroupDao;
+import net.bizarrerus.training_diary.repository.interfaces.MuscleGroupDao;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.model.MuscleGroup;
 import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;

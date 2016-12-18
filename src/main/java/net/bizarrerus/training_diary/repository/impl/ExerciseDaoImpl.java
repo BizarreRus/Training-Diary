@@ -1,6 +1,6 @@
-package net.bizarrerus.training_diary.dao.impl;
+package net.bizarrerus.training_diary.repository.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.ExerciseDao;
+import net.bizarrerus.training_diary.repository.interfaces.ExerciseDao;
 import net.bizarrerus.training_diary.model.Exercise;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;

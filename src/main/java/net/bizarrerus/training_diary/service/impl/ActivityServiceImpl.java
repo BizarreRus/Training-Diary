@@ -1,6 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.ActivityDao;
+import net.bizarrerus.training_diary.repository.interfaces.ActivityDao;
 import net.bizarrerus.training_diary.model.Activity;
 import net.bizarrerus.training_diary.model.Exercise;
 import net.bizarrerus.training_diary.model.Training;

@@ -1,6 +1,6 @@
 package net.bizarrerus.training_diary.service.impl;
 
-import net.bizarrerus.training_diary.dao.interfaces.UserDao;
+import net.bizarrerus.training_diary.repository.interfaces.UserDao;
 import net.bizarrerus.training_diary.model.User;
 import net.bizarrerus.training_diary.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.controller;
+package net.bizarrerus.training_diary.web;
 
 import net.bizarrerus.training_diary.model.MuscleGroup;
 import net.bizarrerus.training_diary.service.interfaces.MuscleGroupService;

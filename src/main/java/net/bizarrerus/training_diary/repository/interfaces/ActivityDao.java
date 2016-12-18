@@ -1,4 +1,4 @@
-package net.bizarrerus.training_diary.dao.interfaces;
+package net.bizarrerus.training_diary.repository.interfaces;
 
 import net.bizarrerus.training_diary.model.Activity;
 
