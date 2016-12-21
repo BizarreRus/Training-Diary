@@ -10,10 +10,9 @@ import net.bizarrerus.training_diary.service.interfaces.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class EditController {
@@ -41,7 +40,7 @@ public class EditController {
 
     @RequestMapping("/editExercise")
     public String editExercise(@ModelAttribute("exercise")Exercise exercise) {
-        exerciseService.update(exercise);
+//        exerciseService.update(exercise);
         return "redirect:/exercises";
     }
 
@@ -51,15 +50,20 @@ public class EditController {
         return "editAll";
     }
 
-    @RequestMapping("/editComplex")
-    public String editComplex(@ModelAttribute("complex")Complex complex) {
-        complexService.update(complex);
+    @RequestMapping(value = "/editComplex", method = RequestMethod.POST)
+    public String editComplex(@ModelAttribute("complex")Complex complex, @RequestParam(value = "exercisesId",required = false)List<Integer> exercisesId) {
+        if (exercisesId == null) {
+            complexService.update(complex);
+        } else {
+            complexService.saveOrUpdate(complex, exercisesId);
+        }
         return "redirect:/complex";
     }
 
     @RequestMapping("/editComplex/{id}")
     public String editComplex(@PathVariable("id") int id, Model model) {
         model.addAttribute("complex", complexService.get(id));
+        model.addAttribute("exerciseList", exerciseService.getAll());
         return "editAll";
     }
 }

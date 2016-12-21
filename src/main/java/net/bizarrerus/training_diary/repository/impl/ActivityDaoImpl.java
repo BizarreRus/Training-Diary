@@ -18,7 +18,7 @@ public class ActivityDaoImpl extends BaseDaoImpl implements ActivityDao{
     @Override
     @Transactional
     public Activity get(int id) {
-        return (Activity) getSession().load(Activity.class, id);
+        return getSession().load(Activity.class, id);
     }
 
     @Override
@@ -29,13 +29,7 @@ public class ActivityDaoImpl extends BaseDaoImpl implements ActivityDao{
 
     @Override
     @Transactional
-    public void update(Activity activity) {
-        getSession().update(activity);
-    }
-
-    @Override
-    @Transactional
     public void save(Activity activity) {
-        getSession().save(activity);
+        getSession().saveOrUpdate(activity);
     }
 }

@@ -82,7 +82,7 @@
     </column>
     <column id="36" parent="18" name="complex">
       <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="37" parent="18" name="PRIMARY">
@@ -125,7 +125,7 @@
     </column>
     <column id="45" parent="20" name="exercise">
       <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="46" parent="20" name="group_id">
@@ -154,7 +154,7 @@
     </column>
     <column id="51" parent="21" name="muscle_group">
       <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
     </column>
     <key id="52" parent="21" name="PRIMARY">
       <ColNames>id</ColNames>
@@ -228,11 +228,11 @@
     </column>
     <column id="67" parent="24" name="username">
       <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
     </column>
     <column id="68" parent="24" name="password">
       <Position>3</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
     </column>
     <key id="69" parent="24" name="PRIMARY">
       <ColNames>id</ColNames>

@@ -9,11 +9,7 @@ public interface TrainingDao {
 
     void save(Training training);
 
-    void saveOrUpdate(Training training);
-
-    void update(Training training);
-
-    void delete(Training training);
+    void delete(int id);
 
     List getAll();
 }

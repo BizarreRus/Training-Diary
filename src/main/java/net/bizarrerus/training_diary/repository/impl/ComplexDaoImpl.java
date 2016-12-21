@@ -12,7 +12,7 @@ public class ComplexDaoImpl extends BaseDaoImpl implements ComplexDao {
     @Override
     @Transactional
     public void save(Complex complex) {
-        getSession().save(complex);
+        getSession().saveOrUpdate(complex);
     }
 
     @Override
@@ -32,12 +32,14 @@ public class ComplexDaoImpl extends BaseDaoImpl implements ComplexDao {
     @Override
     @Transactional
     public Complex get(int id) {
-        return (Complex) getSession().load(Complex.class, id);
+        return getSession().load(Complex.class, id);
     }
 
     @Override
     @Transactional
-    public void update(Complex complex) {
-        getSession().update(complex);
+    public void merge(Complex complex) {
+        getSession().merge(complex);
     }
+
+
 }

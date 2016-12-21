@@ -16,11 +16,11 @@ import java.util.Set;
 @Service
 public class TrainingServiceImpl implements TrainingService {
     @Autowired
-    TrainingDao trainingDao;
+    private TrainingDao trainingDao;
     @Autowired
-    ComplexService complexService;
+    private ComplexService complexService;
     @Autowired
-    ExerciseService exerciseService;
+    private ExerciseService exerciseService;
 
     @Override
     public Training get(int id) {
@@ -29,7 +29,7 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public void save(Training training) {
-        trainingDao.saveOrUpdate(training);
+        trainingDao.save(training);
     }
 
     @Override
@@ -62,17 +62,12 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public void update(Training training) {
-        trainingDao.update(training);
-    }
-
-    @Override
-    public void delete(Training training) {
-        trainingDao.delete(training);
+        trainingDao.save(training);
     }
 
     @Override
     public void delete(int id) {
-        delete(get(id));
+        trainingDao.delete(id);
     }
 
     @Override

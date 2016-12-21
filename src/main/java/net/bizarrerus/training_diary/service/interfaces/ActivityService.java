@@ -14,7 +14,5 @@ public interface ActivityService {
 
     void update(Activity activity);
 
-    void save(Activity activity);
-
     void save(Activity activity, int exerciseID, int trainingID);
 }

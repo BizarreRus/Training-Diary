@@ -7,13 +7,11 @@ import java.util.List;
 public interface MuscleGroupDao {
     List getAll();
 
-    void saveOrUpdate(MuscleGroup muscleGroup);
-
-    MuscleGroup getByName(String name);
+    void save(MuscleGroup muscleGroup);
 
     MuscleGroup get(int id);
 
-    void delete(MuscleGroup muscleGroup);
+    void delete(int id);
 
-    void update(MuscleGroup muscleGroup);
+    void delete(MuscleGroup muscleGroup);
 }

@@ -5,18 +5,13 @@ import net.bizarrerus.training_diary.model.MuscleGroup;
 import java.util.List;
 
 public interface MuscleGroupService {
-
     List getAll();
 
-    void saveOrUpdate(MuscleGroup muscleGroup);
-
-    MuscleGroup getByName(String name);
+    void save(MuscleGroup muscleGroup);
 
     MuscleGroup get(int id);
 
-    void delete(MuscleGroup muscleGroup);
-
-    List getGroupNames();
+//    void delete(MuscleGroup muscleGroup);
 
     void delete(int id);
 

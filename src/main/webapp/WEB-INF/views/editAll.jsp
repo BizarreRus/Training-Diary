@@ -34,13 +34,22 @@
 </c:if>
 
 <c:if test="${!empty complex}">
-    <form:form action="/editComplex" commandName="complex">
+    <form:form action="/editComplex" commandName="complex" method="post">
         <form:hidden path="id"/>
 
         <form:label path="complex">
             <spring:message text="Edit complex name"/>
         </form:label>
         <form:input path="complex"/>
+
+
+                <select class="form-control" name="exercisesId" multiple="multiple">
+                    <c:forEach items="${exerciseList}" var="exercise">
+                        <option value="${exercise.id}">${exercise.exercise}</option>
+                    </c:forEach>
+                </select>
+
+
         <input type="submit" value="Edit complex">
     </form:form>
 </c:if>

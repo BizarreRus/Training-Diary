@@ -18,25 +18,13 @@ public class TrainingDaoImpl extends BaseDaoImpl implements TrainingDao {
     @Override
     @Transactional
     public void save(Training training) {
-        getSession().save(training);
-    }
-
-    @Override
-    @Transactional
-    public void saveOrUpdate(Training training) {
         getSession().saveOrUpdate(training);
     }
 
     @Override
     @Transactional
-    public void update(Training training) {
-        getSession().update(training);
-    }
-
-    @Override
-    @Transactional
-    public void delete(Training training) {
-        getSession().delete(training);
+    public void delete(int id) {
+        getSession().delete(get(id));
     }
 
     @Override

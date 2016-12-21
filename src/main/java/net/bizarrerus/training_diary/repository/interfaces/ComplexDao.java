@@ -13,5 +13,5 @@ public interface ComplexDao {
 
     Complex get(int id);
 
-    void update(Complex complex);
+    void merge(Complex complex);
 }

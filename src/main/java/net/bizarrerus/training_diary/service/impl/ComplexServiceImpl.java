@@ -12,28 +12,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ComplexServiceImpl implements ComplexService {
     @Autowired
-    ComplexDao complexDao;
+    private ComplexDao complexDao;
     @Autowired
-    ExerciseService exerciseService;
+    private ExerciseService exerciseService;
     @Autowired
-    MuscleGroupService muscleGroupService;
+    private MuscleGroupService muscleGroupService;
 
     @Override
-    @Transactional
+//    @Transactional
     public void saveOrUpdate(Complex complex, List<Integer> exercisesID) {
         complex.setExercises(new HashSet<>());
+        Set<Exercise> exercises = new HashSet<>();
         Exercise exercise;
         for (Integer id : exercisesID) {
             exercise = exerciseService.get(id);
             exercise.getComplexes().removeIf(comp -> comp.getId() == complex.getId());
             exercise.getComplexes().add(complex);
-            complex.getExercises().add(exercise);
-            muscleGroupService.saveOrUpdate(exercise.getMuscleGroup());
+            exercises.add(exercise);
         }
+        complex.getExercises().addAll(exercises);
+        complexDao.merge(complex);
     }
 
     @Override
@@ -58,8 +61,6 @@ public class ComplexServiceImpl implements ComplexService {
 
     @Override
     public void update(Complex complex) {
-        Complex oldComplex = complexDao.get(complex.getId());
-        complex.setExercises(oldComplex.getExercises());
-        complexDao.update(complex);
+        complexDao.save(complex);
     }
 }

@@ -26,12 +26,10 @@ public class ComplexTestController {
         return "complex";
     }
 
-    //todo realise validation. new complex must have 1 exercise minimum!
     @RequestMapping(value = "/addComplex", method = RequestMethod.POST)
     public String addComplex(@RequestParam("exercisesID") List<Integer> exercisesID,
                              @ModelAttribute("complex") Complex complex) {
-        System.out.println("exId" + exercisesID + "compl "  + complex.getComplex());
-        complexService.saveOrUpdate(complex, exercisesID);
+//        complexService.save(complex, exercisesID);
         return "redirect:/complex";
     }
 

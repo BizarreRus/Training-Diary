@@ -15,18 +15,13 @@ import java.util.List;
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
     @Autowired
-    ExerciseDao exerciseDao;
+    private ExerciseDao exerciseDao;
     @Autowired
-    MuscleGroupService muscleGroupService;
+    private MuscleGroupService muscleGroupService;
     @Autowired
-    ComplexService complexService;
+    private ComplexService complexService;
     @Autowired
-    TrainingService trainingService;
-
-    @Override
-    public List exercisesByGroupId(int group_id) {
-        return exerciseDao.exercisesByGroupId(group_id);
-    }
+    private TrainingService trainingService;
 
     @Override
     public List getAll() {
@@ -36,12 +31,6 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public Exercise get(int id) {
         return exerciseDao.get(id);
-    }
-
-    @Override
-    @Transactional
-    public void delete(Exercise exercise) {
-        exerciseDao.delete(exercise);
     }
 
     @Override
@@ -64,7 +53,7 @@ public class ExerciseServiceImpl implements ExerciseService {
         exercise.getActivities().clear();
         exercise.getComplexes().clear();
 
-        delete(exercise);
+        exerciseDao.delete(exercise);
     }
 
     @Override
@@ -73,20 +62,17 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Override
-    public void saveOrUpdate(Exercise exercise, int muscleGroupId) {
+    public void save(Exercise exercise, int muscleGroupId) {
         MuscleGroup muscleGroup = muscleGroupService.get(muscleGroupId);
         exercise.setMuscleGroup(muscleGroup);
         muscleGroup.getExerciseSet().removeIf(exer -> exer.getId() == exercise.getId());
         muscleGroup.getExerciseSet().add(exercise);
-        muscleGroupService.saveOrUpdate(muscleGroup);
+        muscleGroupService.save(muscleGroup);
     }
 
     @Override
     public void update(Exercise exercise) {
-        Exercise oldExercise = exerciseDao.get(exercise.getId());
-        exercise.setMuscleGroup(oldExercise.getMuscleGroup());
-        exercise.setComplexes(oldExercise.getComplexes());
-        exerciseDao.update(exercise);
+        save(exercise);
     }
 }
 

@@ -2,7 +2,6 @@ package net.bizarrerus.training_diary.repository.impl;
 
 import net.bizarrerus.training_diary.repository.interfaces.MuscleGroupDao;
 import net.bizarrerus.training_diary.model.MuscleGroup;
-import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +9,6 @@ import java.util.List;
 
 @Repository
 public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
-
     @Override
     @Transactional
     public List getAll() {
@@ -19,20 +17,8 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
 
     @Override
     @Transactional
-    public void saveOrUpdate(MuscleGroup muscleGroup) {
+    public void save(MuscleGroup muscleGroup) {
         getSession().saveOrUpdate(muscleGroup);
-    }
-
-    @Override
-    @Transactional
-    public MuscleGroup getByName(String name) {
-        Query query = getSession().createQuery("FROM MuscleGroup MG WHERE MG.muscleGroup =:name");
-        query.setParameter("name", name);
-        List queryList = query.list();
-        if (!queryList.isEmpty()){
-            return (MuscleGroup) queryList.get(0);
-        }
-        return new MuscleGroup();
     }
 
     @Override
@@ -43,13 +29,13 @@ public class MuscleGroupDaoImpl extends BaseDaoImpl implements MuscleGroupDao {
 
     @Override
     @Transactional
-    public void delete(MuscleGroup muscleGroup) {
-        getSession().delete(muscleGroup);
+    public void delete(int id) {
+        getSession().delete(get(id));
     }
 
     @Override
     @Transactional
-    public void update(MuscleGroup muscleGroup) {
-        getSession().update(muscleGroup);
+    public void delete(MuscleGroup muscleGroup) {
+        getSession().delete(muscleGroup);
     }
 }

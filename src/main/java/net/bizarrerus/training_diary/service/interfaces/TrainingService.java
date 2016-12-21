@@ -16,8 +16,6 @@ public interface TrainingService {
 
     void update(Training training);
 
-    void delete(Training training);
-
     void delete(int id);
 
     List getAll();

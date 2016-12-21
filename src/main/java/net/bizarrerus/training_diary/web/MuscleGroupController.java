@@ -17,7 +17,6 @@ public class MuscleGroupController {
 
     @RequestMapping(value = "/muscleGroups")
     public String muscleGroups(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup, Model model) {
-
         model.addAttribute("muscleGroup", muscleGroup);
         model.addAttribute("groupList", muscleGroupService.getAll());
         return "muscleGroups";
@@ -25,7 +24,7 @@ public class MuscleGroupController {
 
     @RequestMapping(value = "/createMuscleGroup", method = RequestMethod.POST)
     public String createMuscleGroup(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup) {
-        muscleGroupService.saveOrUpdate(muscleGroup);
+        muscleGroupService.save(muscleGroup);
         return "redirect:/muscleGroups";
     }
 

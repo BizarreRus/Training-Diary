@@ -15,11 +15,11 @@ import java.util.List;
 @Service
 public class ActivityServiceImpl implements ActivityService {
     @Autowired
-    ActivityDao activityDao;
+    private ActivityDao activityDao;
     @Autowired
-    TrainingService trainingService;
+    private TrainingService trainingService;
     @Autowired
-    ExerciseService exerciseService;
+    private ExerciseService exerciseService;
 
     @Override
     public void delete(Activity activity) {
@@ -38,11 +38,6 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public void update(Activity activity) {
-        activityDao.update(activity);
-    }
-
-    @Override
-    public void save(Activity activity) {
         activityDao.save(activity);
     }
 
@@ -56,6 +51,6 @@ public class ActivityServiceImpl implements ActivityService {
 
         activity.setExercise(exercise);
         activity.setTraining(training);
-        save(activity);
+        activityDao.save(activity);
     }
 }

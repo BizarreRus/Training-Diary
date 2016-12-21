@@ -28,19 +28,19 @@ public class MuscleGroupTestController {
 
     @RequestMapping("/getGroup")
     public String getGroupById(@RequestParam("groupName") String name, Model model){
-        model.addAttribute("muscleGroup", muscleGroupService.getByName(name));
+//        model.addAttribute("muscleGroup", muscleGroupService.getByName(name));
         return "index";
     }
 
     @RequestMapping(value = "/addGroup", method = RequestMethod.POST)
     public String addGroup(@ModelAttribute("muscleGroup") MuscleGroup muscleGroup){
-        muscleGroupService.saveOrUpdate(muscleGroup);
+//        muscleGroupService.saveOrUpdate(muscleGroup);
         return "redirect:/";
     }
 
     @RequestMapping("/removeGroup")
     public String removeGroup(@RequestParam("groupName") String name){
-        muscleGroupService.delete(muscleGroupService.getByName(name));
+//        muscleGroupService.delete(muscleGroupService.getByName(name));
         return "redirect:/";
     }
     @RequestMapping("/delete/{id}")

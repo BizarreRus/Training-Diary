@@ -11,8 +11,6 @@ public interface ActivityDao {
 
     List getAll();
 
-    void update(Activity activity);
-
     void save(Activity activity);
 
 }

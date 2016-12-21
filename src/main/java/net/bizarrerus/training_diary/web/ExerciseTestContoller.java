@@ -18,7 +18,7 @@ public class ExerciseTestContoller {
     @RequestMapping("/exercise")
     public String exercises(Model model) {
         model.addAttribute("exercises", exerciseService.getAll());
-        model.addAttribute("groupNames", muscleGroupService.getGroupNames());
+//        model.addAttribute("groupNames", muscleGroupService.getGroupNames());
         model.addAttribute("groupList", muscleGroupService.getAll());
         model.addAttribute("exercise", new Exercise());
         return "exercise";

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,14 +26,8 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
 
     @Override
     @Transactional
-    public void saveOrUpdate(MuscleGroup muscleGroup) {
-        muscleGroupDao.saveOrUpdate(muscleGroup);
-    }
-
-    @Override
-    @Transactional
-    public MuscleGroup getByName(String name) {
-        return muscleGroupDao.getByName(name);
+    public void save(MuscleGroup muscleGroup) {
+        muscleGroupDao.save(muscleGroup);
     }
 
     @Override
@@ -46,22 +39,31 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
     @Override
     @Transactional
     public void delete(int id) {
-        delete(get(id));
-    }
-
-    @Override
-    @Transactional
-    public void delete(MuscleGroup muscleGroup) {
-        MuscleGroup defaultGroup = getByName("Default");
+        MuscleGroup muscleGroup = get(id);
+        MuscleGroup defaultGroup = get(1);
         Set<Exercise> exercises = muscleGroup.getExerciseSet();
         for (Exercise exercise : exercises) {
             exercise.setMuscleGroup(defaultGroup);
         }
         defaultGroup.getExerciseSet().addAll(exercises);
-        saveOrUpdate(defaultGroup);
+        save(defaultGroup);
         muscleGroup.getExerciseSet().clear();
         muscleGroupDao.delete(muscleGroup);
     }
+
+//    @Override
+//    @Transactional
+//    public void delete(MuscleGroup muscleGroup) {
+//        MuscleGroup defaultGroup = get(1);
+//        Set<Exercise> exercises = muscleGroup.getExerciseSet();
+//        for (Exercise exercise : exercises) {
+//            exercise.setMuscleGroup(defaultGroup);
+//        }
+//        defaultGroup.getExerciseSet().addAll(exercises);
+//        save(defaultGroup);
+//        muscleGroup.getExerciseSet().clear();
+//        muscleGroupDao.delete(muscleGroup.getId());
+//    }
 
     @Override
     public void update(MuscleGroup muscleGroup) {
@@ -70,20 +72,6 @@ public class MuscleGroupServiceImpl implements MuscleGroupService {
         for (Exercise exercise : exercises) {
             exercise.setMuscleGroup(muscleGroup);
         }
-
-        muscleGroupDao.update(muscleGroup);
-    }
-
-    @Override
-    @Transactional
-    public List getGroupNames() {
-        List<String> names = new ArrayList<>();
-        List<MuscleGroup> tmp = getAll();
-        for (MuscleGroup muscleGroup : tmp) {
-            if (!muscleGroup.getMuscleGroup().equals("Default")) {
-                names.add(muscleGroup.getMuscleGroup());
-            }
-        }
-        return names;
+        muscleGroupDao.save(muscleGroup);
     }
 }
